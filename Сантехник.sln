@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Сантехник", "Сантехник\Сантехник.csproj", "{66BA4B25-9E3A-4F2A-BABD-0ABA401AFAA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Сантехник", "Сантехник\Сантехник.csproj", "{66BA4B25-9E3A-4F2A-BABD-0ABA401AFAA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Сантехник.CoreLayer", "Сантехник.CoreLayer\Сантехник.CoreLayer.csproj", "{C4ED8412-DE29-449E-BE98-4ED3F3E94C30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Сантехник.CoreLayer", "Сантехник.CoreLayer\Сантехник.CoreLayer.csproj", "{C4ED8412-DE29-449E-BE98-4ED3F3E94C30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Сантехник.EntityLayer", "Сантехник.EntityLayer\Сантехник.EntityLayer.csproj", "{7F9733C1-9598-44B0-B981-E0F940033010}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Сантехник.EntityLayer", "Сантехник.EntityLayer\Сантехник.EntityLayer.csproj", "{7F9733C1-9598-44B0-B981-E0F940033010}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Сантехник.Repository", "Сантехник.Repository\Сантехник.Repository.csproj", "{563D542E-DAEA-46FD-BE96-F001BC1385F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Сантехник.RepositoryLayer", "Сантехник.Repository\Сантехник.RepositoryLayer.csproj", "{563D542E-DAEA-46FD-BE96-F001BC1385F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Сантехник.ServiceLayer", "Сантехник.ServiceLayer\Сантехник.ServiceLayer.csproj", "{287CBBE0-33EF-484F-BBFE-A7E7724262F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Сантехник.ServiceLayer", "Сантехник.ServiceLayer\Сантехник.ServiceLayer.csproj", "{287CBBE0-33EF-484F-BBFE-A7E7724262F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
