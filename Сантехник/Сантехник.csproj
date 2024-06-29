@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Сантехник.ServiceLayer\Сантехник.ServiceLayer.csproj" />
+  </ItemGroup>
+
 </Project>

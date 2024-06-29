@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Сантехник.CoreLayer.BaseEntity;
 
 namespace Сантехник.EntityLayer.WebApplication.Entities
 {
-    public class HomePage
+    public class HomePage : BaseEntity
     {
+        public string Header { get; set; } = null!;
+        public string Description { get; set; } = null!;
+        public string VideoLink { get; set; } = null!;
     }
 }

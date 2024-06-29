@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="WebApplication\ViewModel\" />
+    <Folder Include="WebApplication\ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Сантехник.CoreLayer\Сантехник.CoreLayer.csproj" />
   </ItemGroup>
 
 </Project>
