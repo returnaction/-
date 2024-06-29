@@ -14,6 +14,6 @@ namespace Сантехник.EntityLayer.WebApplication.Entities
         public string Title { get; set; } = null!;
 
         public string FileName { get; set; } = null!;
-        public string TyleType { get; set; } = null!;
+        public string FileType { get; set; } = null!;
     }
 }

@@ -11,8 +11,13 @@ namespace Сантехник.RepositoryLayer.Configuration
 {
     public class AboutConfig : IEntityTypeConfiguration<About>
     {
+        // or you can use data annotations
         public void Configure(EntityTypeBuilder<About> builder)
         {
+            builder.Property(x => x.CreatedDate).IsRequired().HasMaxLength(10);
+            builder.Property(x => x.UpdateDate).HasMaxLength(10);
+            builder.Property(x => x.RowVersion).IsRowVersion(); // for update
+
             builder.Property(x => x.Header).IsRequired().HasMaxLength(5000);
             builder.Property(x => x.Description).IsRequired().HasMaxLength(5000);
             builder.Property(x => x.Clients).IsRequired().HasMaxLength(5);

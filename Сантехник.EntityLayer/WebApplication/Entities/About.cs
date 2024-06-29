@@ -18,7 +18,7 @@ namespace Сантехник.EntityLayer.WebApplication.Entities
         public int HoursOfSupport { get; set; }
 
         public string FileName { get; set; } = null!;
-        public string TyleType { get; set; } = null!;
+        public string FileType { get; set; } = null!;
 
         public int SocialMediaId { get; set; }
         public SocialMedia SocialMedia { get; set; } = null!;
