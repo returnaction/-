@@ -18,7 +18,7 @@ namespace Сантехник.RepositoryLayer.Configuration
             builder.Property(x => x.RowVersion).IsRowVersion();
 
             builder.Property(x => x.Name).IsRequired().HasMaxLength(200);
-            builder.Property(x => x.Description).IsRequired().HasMaxLength(500);
+            builder.Property(x => x.Description).IsRequired().HasMaxLength(5000);
             builder.Property(x => x.Icon).IsRequired().HasMaxLength(100);
 
             builder.HasData(new Service

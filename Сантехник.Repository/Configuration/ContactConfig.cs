@@ -18,7 +18,7 @@ namespace Сантехник.RepositoryLayer.Configuration
             builder.Property(x => x.RowVersion).IsRowVersion();
 
 
-            builder.Property(x => x.Location).IsRowVersion().HasMaxLength(500);
+            builder.Property(x => x.Location).IsRequired().HasMaxLength(500);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(200);
             builder.Property(x => x.Call).IsRequired().HasMaxLength(20);
             builder.Property(x => x.Map).IsRequired();

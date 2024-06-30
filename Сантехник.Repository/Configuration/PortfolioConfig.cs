@@ -56,7 +56,7 @@ namespace Сантехник.RepositoryLayer.Configuration
                 FileName = "test4",
                 FileType = "test4",
 
-                CategoryId = 4
+                CategoryId = 2
             });
             
         }
