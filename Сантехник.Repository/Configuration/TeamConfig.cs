@@ -21,6 +21,21 @@ namespace Сантехник.RepositoryLayer.Configuration
             builder.Property(x => x.Title).IsRequired().HasMaxLength(200);
             builder.Property(x => x.FileName).IsRequired();
             builder.Property(x => x.FileType).IsRequired();
+
+            builder.HasData(new Team
+            {
+                Id = 1,
+                FullName = "Test FullName for Team",
+                Title = "Test Title Name",
+
+                FileName = "test",
+                FileType = "test",
+
+                Facebook = "test",
+                Instagram = "test",
+                Linkedin = "test",
+                Twitter = "test",
+            });
         }
     }
 }

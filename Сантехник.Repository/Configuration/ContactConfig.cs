@@ -23,6 +23,14 @@ namespace Сантехник.RepositoryLayer.Configuration
             builder.Property(x => x.Call).IsRequired().HasMaxLength(20);
             builder.Property(x => x.Map).IsRequired();
 
+            builder.HasData(new Contact
+            {
+                Id = 1,
+                Location = "123 Demon St.",
+                Email = "test@gmail.com",
+                Call = "123456789",
+                Map = "testlink"
+            });
 
         }
     }

@@ -18,6 +18,16 @@ namespace Сантехник.RepositoryLayer.Configuration
             builder.Property(x => x.RowVersion).IsRowVersion();
 
             builder.Property(x => x.Name).IsRequired().HasMaxLength(50);
+
+            builder.HasData(new Category
+            {
+                Id = 1,
+                Name = "Pojects"
+            }, new Category
+            {
+                Id = 2,
+                Name = "Proplets"
+            });
         }
     }
 }

@@ -22,6 +22,36 @@ namespace Сантехник.RepositoryLayer.Configuration
             builder.Property(x => x.Title).IsRequired().HasMaxLength(200);
             builder.Property(x => x.FileName).IsRequired();
             builder.Property(x => x.FileType).IsRequired();
+
+            builder.HasData(new Testimonial
+            {
+                Id = 1,
+                Comment = "Test comment for Testimonial",
+                FullName = "Test FullName for Testimonial",
+                Title = "Test title for Testimonial",
+
+                FileName = "test",
+                FileType = "test"
+            }, new Testimonial
+            {
+                Id = 2,
+                Comment = "Test comment for Testimonial",
+                FullName = "Test FullName for Testimonial",
+                Title = "Test title for Testimonial",
+
+                FileName = "test2",
+                FileType = "test2"
+            },
+            new Testimonial
+            {
+                Id = 3,
+                Comment = "Test comment for Testimonial",
+                FullName = "Test FullName for Testimonial",
+                Title = "Test title for Testimonial",
+
+                FileName = "test3",
+                FileType = "test3"
+            });
         }
     }
 }
