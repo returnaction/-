@@ -1,4 +1,5 @@
 using Сантехник.RepositoryLayer.Extensions;
+using Сантехник.ServiceLayer.Extensions;
 namespace Сантехник
 {
     public class Program
@@ -11,6 +12,7 @@ namespace Сантехник
             builder.Services.AddControllersWithViews();
 
             builder.Services.LoadRepositoryLayerExtensions(builder.Configuration);
+            builder.Services.LoadServiceLayerExtensions();
 
             var app = builder.Build();
 
