@@ -34,24 +34,17 @@ namespace Сантехник.ServiceLayer.Services.Concrete
             return aboutListVM;
         }
 
+        public async Task<AboutUpdateVM> GetAboutById(int id)
+        {
+            AboutUpdateVM? about = await _repository.Where(x => x.Id == id).ProjectTo<AboutUpdateVM>(_mapper.ConfigurationProvider).SingleAsync();//FirstOrDefaultAsync();
+            return about;
+        }
+
         public async Task AddAboutAsync(AboutAddVM request)
         {
             About? about = _mapper.Map<About>(request);
             await _repository.AddEntityAsync(about);
             await _unitOfWork.CommitAsync();
-        }
-
-        public async Task DeleteAboutAsync(int id)
-        {
-            About? about = await _repository.GetEntityByIdAsync(id);
-            _repository.DeleteEntity(about);
-            await _unitOfWork.CommitAsync();
-        }
-
-        public async Task<AboutUpdateVM> GetAboutBYId(int id)
-        {
-            AboutUpdateVM? about = await _repository.Where(x => x.Id == id).ProjectTo<AboutUpdateVM>(_mapper.ConfigurationProvider).SingleAsync();//FirstOrDefaultAsync();
-            return about;
         }
 
         public async Task UpdateAboutAsync(AboutUpdateVM request)
@@ -61,5 +54,13 @@ namespace Сантехник.ServiceLayer.Services.Concrete
             await _unitOfWork.CommitAsync();
 
         }
+
+        public async Task DeleteAboutAsync(int id)
+        {
+            About? about = await _repository.GetEntityByIdAsync(id);
+            _repository.DeleteEntity(about);
+            await _unitOfWork.CommitAsync();
+        }
+
     }
 }

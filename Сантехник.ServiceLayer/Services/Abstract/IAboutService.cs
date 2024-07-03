@@ -11,7 +11,7 @@ namespace Сантехник.ServiceLayer.Services.Abstract
     {
         Task AddAboutAsync(AboutAddVM request);
         Task DeleteAboutAsync(int id);
-        Task<AboutUpdateVM> GetAboutBYId(int id);
+        Task<AboutUpdateVM> GetAboutById(int id);
         Task<List<AboutListVM>> GetAllListAsync();
         Task UpdateAboutAsync(AboutUpdateVM request);
     }
