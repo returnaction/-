@@ -35,7 +35,7 @@ namespace Сантехник.RepositoryLayer.UnitOfWork.Concrete
             return _context.DisposeAsync(); // или сделать not async
         }
 
-        IGenericRepositories<T> IUnitOfWork.GetGeneric<T>()
+        IGenericRepositories<T> IUnitOfWork.GetGenericRepository<T>()
         {
             return new GenericRepositories<T>(_context);
         }

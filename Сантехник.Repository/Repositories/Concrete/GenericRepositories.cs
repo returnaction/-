@@ -37,7 +37,7 @@ namespace Сантехник.RepositoryLayer.Repositories.Concrete
             _dbSet.Remove(entity);
         }
 
-        public IQueryable GetAllList()
+        public IQueryable GetAllEntityList()
         {
             return _dbSet.AsNoTracking().AsQueryable();
         }

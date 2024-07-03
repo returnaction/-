@@ -12,7 +12,7 @@ namespace Сантехник.RepositoryLayer.Repositories.Abstract
     {
         Task AddEntityAsync(T entity);
         void DeleteEntity(T entity);
-        IQueryable GetAllList();
+        IQueryable GetAllEntityList();
         Task<T> GetEntityByIdAsync(int id);
         void UpdateEntity(T entity);
         IQueryable<T> Where(Expression<Func<T, bool>> predicate);

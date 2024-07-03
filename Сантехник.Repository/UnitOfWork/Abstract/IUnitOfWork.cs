@@ -12,7 +12,7 @@ namespace Сантехник.RepositoryLayer.UnitOfWork.Abstract
     {
         void Commit();
         Task CommitAsync();
-        IGenericRepositories<T> GetGeneric<T>() where T : class, IBaseEntity, new();
+        IGenericRepositories<T> GetGenericRepository<T>() where T : class, IBaseEntity, new();
         ValueTask DisposeAsync();
     }
 }
