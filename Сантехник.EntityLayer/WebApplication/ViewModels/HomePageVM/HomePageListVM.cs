@@ -8,5 +8,13 @@ namespace Сантехник.EntityLayer.WebApplication.ViewModels.HomePageVM
 {
     public class HomePageListVM
     {
+        public int Id { get; set; }
+        public string CreatedDate { get; set; } = DateTime.Now.ToString("d");
+        public string? UpdateDate { get; set; }
+
+
+        public string Header { get; set; } = null!;
+        public string Description { get; set; } = null!;
+        public string VideoLink { get; set; } = null!;
     }
 }

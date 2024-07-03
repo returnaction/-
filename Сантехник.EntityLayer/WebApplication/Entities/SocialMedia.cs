@@ -15,7 +15,7 @@ namespace Сантехник.EntityLayer.WebApplication.Entities
         public string? Instagram { get; set; } = null!;
 
         public int AboutUsId { get; set; }
-        public About About { get; set; }
+        public About About { get; set; } = null!;
 
     }
 }
