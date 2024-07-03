@@ -14,7 +14,7 @@ using Сантехник.ServiceLayer.Services.Abstract;
 
 namespace Сантехник.ServiceLayer.Services.Concrete
 {
-    public class AboutService : IAboutService
+    public class AboutService : IAboutService 
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -57,7 +57,7 @@ namespace Сантехник.ServiceLayer.Services.Concrete
         public async Task UpdateAboutAsync(AboutUpdateVM request)
         {
             var about = _mapper.Map<About>(request);
-             _repository.UpdateEntity(about);
+            _repository.UpdateEntity(about);
             await _unitOfWork.CommitAsync();
 
         }
