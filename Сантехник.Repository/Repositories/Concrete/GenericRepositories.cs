@@ -11,7 +11,7 @@ using Сантехник.RepositoryLayer.Repositories.Abstract;
 
 namespace Сантехник.RepositoryLayer.Repositories.Concrete
 {
-    public class GenericRepositories<T> : IGenericRepositories<T> where T: class, IBaseEntity, new()
+    public class GenericRepositories<T> : IGenericRepositories<T> where T : class, IBaseEntity, new()
     {
         private readonly AppDbContext _context;
         private DbSet<T> _dbSet;
@@ -39,7 +39,7 @@ namespace Сантехник.RepositoryLayer.Repositories.Concrete
 
         public IQueryable GetAllList()
         {
-             return _dbSet.AsNoTracking().AsQueryable();
+            return _dbSet.AsNoTracking().AsQueryable();
         }
 
         public IQueryable<T> Where(Expression<Func<T, bool>> predicate)

@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Сантехник.CoreLayer.BaseEntities;
 
 namespace Сантехник.RepositoryLayer.Repositories.Abstract
 {
-    public interface IGenericRepositories<T> where T : class, IBaseEntity
+    public interface IGenericRepositories<T> where T : class, IBaseEntity, new()
     {
+        Task AddEntityAsync(T entity);
+        void DeleteEntity(T entity);
+        IQueryable GetAllList();
+        Task<T> GetEntityByIdAsync(int id);
+        void UpdateEntity(T entity);
+        IQueryable<T> Where(Expression<Func<T, bool>> predicate);
     }
 }
