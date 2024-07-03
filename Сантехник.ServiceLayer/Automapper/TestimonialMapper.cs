@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Сантехник.ServiceLayer.Automapper
 {
-    public class AboutMapper : Profile
+    public class TestimonialMapper : Profile
     {
-        protected AboutMapper()
+        protected TestimonialMapper()
         {
         }
     }
