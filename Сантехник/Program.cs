@@ -49,6 +49,8 @@ namespace Сантехник
     }
 }
 
+// bootstrapmade.com layouts
+
 
 // IQueriable
 // AsNoTracking()
