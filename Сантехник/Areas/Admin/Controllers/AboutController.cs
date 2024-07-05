@@ -4,7 +4,7 @@ using Сантехник.ServiceLayer.Services.Abstract;
 
 namespace Сантехник.Areas.Admin.Controllers
 {
-    
+    [Area("Admin")]
     public class AboutController : Controller
     {
         private readonly IAboutService _aboutService;

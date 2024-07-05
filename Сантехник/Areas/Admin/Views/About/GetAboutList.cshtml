@@ -1,0 +1,56 @@
+﻿@model List<AboutListVM>
+@{
+    ViewData["Title"] = "GetAboutList";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h5 class="card-title">About Us</h5>
+
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+        <li class="breadcrumb-item active">About us</li>
+    </ol>
+</nav>
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">About list</h5>
+
+        <!-- Table with hoverable rows -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Header</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Updated</th>
+                    <th scope="col">Edit</th> @* don't  really need an Edit button in here *@
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Header</td>
+                        <td>@item.CreatedDate</td>
+                        <td>@item.UpdateDate</td>
+                        <td>
+                            <a class="btn btn-primary" asp-area="Admin" asp-controller="UpdateAbout" asp-action="Index">Edit</a> @* don't  really need an Edit button in here *@
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" asp-area="Admin" asp-controller="DeleteAbout" asp-action="Index">Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <!-- End Table with hoverable rows -->
+
+    </div>
+</div>
+
