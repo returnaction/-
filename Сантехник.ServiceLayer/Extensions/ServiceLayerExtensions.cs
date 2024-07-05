@@ -16,7 +16,7 @@ namespace Сантехник.ServiceLayer.Extensions
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            //services.AddScoped<IAboutService, AboutService>(); silly way to add services.
+            //services.AddScoped<IAboutService, AboutService>(); silly way to add services. One bellow is better.
 
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass && !x.IsAbstract && x.Name.EndsWith("Service"));
 
