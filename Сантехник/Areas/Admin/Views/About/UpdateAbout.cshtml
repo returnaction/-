@@ -1,6 +1,6 @@
-﻿@model AboutAddVM
+﻿@model AboutUpdateVM
 @{
-    ViewData["Title"] = "AddAbout";
+    ViewData["Title"] = "UpdateAbout";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,7 +9,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
             <li class="breadcrumb-item active"><a asp-area="Admin" asp-controller="About" asp-action="GetAboutList">About us</a></li>
-            <li class="breadcrumb-item active">Add</li>
+            <li class="breadcrumb-item active">Update</li>
         </ol>
     </nav>
 </div>
@@ -18,7 +18,10 @@
     <div class="card-body mt-3">
 
         <!-- Floating Labels Form -->
-        <form asp-area="Admin" asp-controller="About" asp-action="AddAbout" class="row g-3" method="post" enctype="multipart/form-data">
+        <form asp-area="Admin" asp-controller="About" asp-action="UpdateAbout" class="row g-3" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="RowVersion" />
+
             <input type="hidden" asp-for="FileName" value="test" /> @* Delete this later when add photo functionallity *@
             <input type="hidden" asp-for="FileType" value="test" /> @* Delete this later when add photo functionallity *@
             <div class="col-md-12">

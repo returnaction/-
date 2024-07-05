@@ -8,7 +8,7 @@
 
 <nav>
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
         <li class="breadcrumb-item active">About us</li>
     </ol>
 </nav>
@@ -47,6 +47,10 @@
         <!-- End Table with hoverable rows -->
 
     </div>
+</div>
+
+<div class="card">
+    <a class="btn btn-primary" asp-area="Admin" asp-controller="About" asp-action="AddAbout">Add</a>
 </div>
 
 @foreach (var item in Model)
@@ -110,7 +114,7 @@
                                     <div class="col-lg-9 col-md-8">@item.HoursOfSupport</div>
                                 </div>
 
-                                <a class="btn btn-primary" asp-area="Admin" asp-controller="About" asp-action="UpdateAbout">Edit</a>
+                                <a class="btn btn-primary" asp-area="Admin" asp-controller="About" asp-action="UpdateAbout" asp-route-id="@item.Id">Edit</a>
 
                             </div>
 
@@ -125,4 +129,4 @@
     </section>
 
 }
-    <a class="btn btn-primary" asp-area="Admin" asp-controller="About" asp-action="AddAbout">Add</a>
+
