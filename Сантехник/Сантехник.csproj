@@ -17,4 +17,9 @@
     <ProjectReference Include="..\Сантехник.ServiceLayer\Сантехник.ServiceLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Area\Admin\Controllers\" />
+    <Folder Include="Area\Admin\Models\" />
+  </ItemGroup>
+
 </Project>

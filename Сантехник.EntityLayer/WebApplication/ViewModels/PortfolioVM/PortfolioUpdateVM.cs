@@ -22,6 +22,6 @@ namespace Сантехник.EntityLayer.WebApplication.ViewModels.PortfolioVM
         public string FileType { get; set; } = null!;
 
         public int CategoryId { get; set; }
-        public CategoryUpdateVM Category { get; set; } = null!;
+        public CategoryUpdateVM Category { get; set; } = null!; 
     }
 }
