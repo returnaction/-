@@ -36,7 +36,7 @@ namespace Сантехник
                 endpoint.MapAreaControllerRoute(
                     name: "Admin",
                     areaName: "Admin",
-                    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+                    pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}");
 
                 endpoint.MapControllerRoute(
                 name: "default",
