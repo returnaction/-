@@ -36,27 +36,27 @@ namespace Сантехник.ServiceLayer.Services.Concrete
             return portfolioListVM;
         }
 
-        public async Task<PortfolioUpdateVM> GetCategoryById(int id)
+        public async Task<PortfolioUpdateVM> GetPortfolioById(int id)
         {
             PortfolioUpdateVM? portfolio = await _repository.Where(x => x.Id == id).ProjectTo<PortfolioUpdateVM>(_mapper.ConfigurationProvider).SingleAsync();
             return portfolio;
         }
 
-        public async Task AddCategoryService(PortfolioAddVM request)
+        public async Task AddPortfolioService(PortfolioAddVM request)
         {
             Portfolio? portfolio = _mapper.Map<Portfolio>(request);
             await _repository.AddEntityAsync(portfolio);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task UpdateCategoryAsync(PortfolioUpdateVM request)
+        public async Task UpdatePortfolioAsync(PortfolioUpdateVM request)
         {
             Portfolio? portfolio = _mapper.Map<Portfolio>(request);
             _repository.UpdateEntity(portfolio);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task DeleteCategoryAsync(int id)
+        public async Task DeletePortfolioAsync(int id)
         {
             Portfolio? portfolio = await _repository.GetEntityByIdAsync(id);
             _repository.DeleteEntity(portfolio);

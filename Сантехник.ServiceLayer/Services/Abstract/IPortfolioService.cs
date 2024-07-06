@@ -9,10 +9,10 @@ namespace Сантехник.ServiceLayer.Services.Abstract
 {
     public interface IPortfolioService
     {
-        Task AddCategoryService(PortfolioAddVM request);
-        Task DeleteCategoryAsync(int id);
+        Task AddPortfolioService(PortfolioAddVM request);
+        Task DeletePortfolioAsync(int id);
         Task<List<PortfolioListVM>> GetAllListAsync();
-        Task<PortfolioUpdateVM> GetCategoryById(int id);
-        Task UpdateCategoryAsync(PortfolioUpdateVM request);
+        Task<PortfolioUpdateVM> GetPortfolioById(int id);
+        Task UpdatePortfolioAsync(PortfolioUpdateVM request);
     }
 }
