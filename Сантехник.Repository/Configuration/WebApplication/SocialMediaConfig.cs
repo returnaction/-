@@ -7,26 +7,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Сантехник.EntityLayer.WebApplication.Entities;
 
-namespace Сантехник.RepositoryLayer.Configuration
+namespace Сантехник.RepositoryLayer.Configuration.WebApplication
 {
-    public class CategoryConfig : IEntityTypeConfiguration<Category>
+    public class SocialMediaConfig : IEntityTypeConfiguration<SocialMedia>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<SocialMedia> builder)
         {
             builder.Property(x => x.CreatedDate).IsRequired().HasMaxLength(10);
             builder.Property(x => x.UpdateDate).HasMaxLength(10);
             builder.Property(x => x.RowVersion).IsRowVersion();
 
-            builder.Property(x => x.Name).IsRequired().HasMaxLength(50);
-
-            builder.HasData(new Category
+            builder.HasData(new SocialMedia
             {
                 Id = 1,
-                Name = "Pojects"
-            }, new Category
-            {
-                Id = 2,
-                Name = "Proplets"
+                Facebook = "test",
+                Instagram = "test",
+                Linkedin = "test",
+                Twitter = "test",
             });
         }
     }

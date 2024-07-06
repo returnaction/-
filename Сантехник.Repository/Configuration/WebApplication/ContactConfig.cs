@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Сантехник.EntityLayer.WebApplication.Entities;
 
-namespace Сантехник.RepositoryLayer.Configuration
+namespace Сантехник.RepositoryLayer.Configuration.WebApplication
 {
     public class ContactConfig : IEntityTypeConfiguration<Contact>
     {
