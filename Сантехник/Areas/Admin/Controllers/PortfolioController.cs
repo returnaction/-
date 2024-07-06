@@ -17,7 +17,7 @@ namespace Сантехник.Areas.Admin.Controllers
         
         public async Task<IActionResult> GetPortfolioList()
         {
-            var portfolioList = _portfolioService.GetAllListAsync();
+            var portfolioList = await _portfolioService.GetAllListAsync();
             return View(portfolioList);
         }
 
@@ -35,7 +35,7 @@ namespace Сантехник.Areas.Admin.Controllers
 
         public async Task<IActionResult> UpdatePortfolio(int id)
         {
-            var portfolio = _portfolioService.GetPortfolioById(id);
+            var portfolio = await _portfolioService.GetPortfolioById(id);
             return View(portfolio);
         }
 

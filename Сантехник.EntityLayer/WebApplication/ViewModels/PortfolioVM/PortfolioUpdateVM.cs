@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,8 @@ namespace Сантехник.EntityLayer.WebApplication.ViewModels.PortfolioVM
 
         public string FileName { get; set; } = null!;
         public string FileType { get; set; } = null!;
+
+        public IFormFile Photo { get; set; } = null!;
 
         public int CategoryId { get; set; }
         public CategoryUpdateVM Category { get; set; } = null!; 
