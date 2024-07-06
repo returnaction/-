@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace Сантехник.EntityLayer.WebApplication.ViewModels.TeamVM
 
         public string FileName { get; set; } = null!;
         public string FileType { get; set; } = null!;
+
+        public IFormFile Photo { get; set; } = null!;
 
         public string? Twitter { get; set; } = null!;
         public string? Linkedin { get; set; } = null!;

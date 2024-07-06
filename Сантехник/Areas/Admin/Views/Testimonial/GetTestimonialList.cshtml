@@ -1,0 +1,60 @@
+﻿@model List<TestimonialListVM>
+@{
+    ViewData["Title"] = "GetTestimonialList";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h5 class="card-title">Testimonial</h5>
+
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+        <li class="breadcrumb-item active">Testimonial</li>
+    </ol>
+</nav>
+
+<div class="card">
+    <a class="btn btn-primary" asp-area="Admin" asp-controller="Testimonial" asp-action="AddTestimonial">Add</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+
+        <!-- Table with hoverable rows -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Updated</th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Title</td>
+                        <td>@item.FullName</td>
+                        <td>@item.CreatedDate</td>
+                        <td>@item.UpdateDate</td>
+                        <td>
+                            <a class="btn btn-warning" asp-area="Admin" asp-controller="Testimonial" asp-action="UpdateTestimonial" asp-route-id="@item.Id">Edit</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" asp-area="Admin" asp-controller="Testimonial" asp-action="DeleteTestimonial" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <!-- End Table with hoverable rows -->
+
+    </div>
+</div>
+

@@ -36,27 +36,27 @@ namespace Сантехник.ServiceLayer.Services.Concrete
             return testimonialListVM;
         }
 
-        public async Task<TestimonialUpdateVM> GetCategoryById(int id)
+        public async Task<TestimonialUpdateVM> GetTestimonialById(int id)
         {
             TestimonialUpdateVM? testimonial = await _repository.Where(x => x.Id == id).ProjectTo<TestimonialUpdateVM>(_mapper.ConfigurationProvider).SingleAsync();
             return testimonial;
         }
 
-        public async Task AddCategoryService(TestimonialAddVM request)
+        public async Task AddTestimonialService(TestimonialAddVM request)
         {
             Testimonial? testimonial = _mapper.Map<Testimonial>(request);
             await _repository.AddEntityAsync(testimonial);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task UpdateCategoryAsync(TestimonialUpdateVM request)
+        public async Task UpdateTestimonialAsync(TestimonialUpdateVM request)
         {
             Testimonial? testimonial = _mapper.Map<Testimonial>(request);
             _repository.UpdateEntity(testimonial);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task DeleteCategoryAsync(int id)
+        public async Task DeleteTestimonialAsync(int id)
         {
             Testimonial? testimonial = await _repository.GetEntityByIdAsync(id);
             _repository.DeleteEntity(testimonial);

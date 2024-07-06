@@ -9,10 +9,10 @@ namespace Сантехник.ServiceLayer.Services.Abstract
 {
     public interface ITestimonialService
     {
-        Task AddCategoryService(TestimonialAddVM request);
-        Task DeleteCategoryAsync(int id);
+        Task AddTestimonialService(TestimonialAddVM request);
+        Task DeleteTestimonialAsync(int id);
         Task<List<TestimonialListVM>> GetAllListAsync();
-        Task<TestimonialUpdateVM> GetCategoryById(int id);
-        Task UpdateCategoryAsync(TestimonialUpdateVM request);
+        Task<TestimonialUpdateVM> GetTestimonialById(int id);
+        Task UpdateTestimonialAsync(TestimonialUpdateVM request);
     }
 }

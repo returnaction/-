@@ -17,6 +17,8 @@ namespace Сантехник.EntityLayer.WebApplication.ViewModels.TestimonialVM
         public string FullName { get; set; } = null!;
         public string Title { get; set; } = null!;
 
+
+        // we probably won't need those in List
         public string FileName { get; set; } = null!;
         public string FileType { get; set; } = null!;
     }

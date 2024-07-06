@@ -16,6 +16,7 @@ namespace Сантехник.EntityLayer.WebApplication.ViewModels.TeamVM
         public string FullName { get; set; } = null!;
         public string Title { get; set; } = null!;
 
+        // it's probably need to be delete it in TeamListVM
         public string FileName { get; set; } = null!;
         public string FileType { get; set; } = null!;
 
