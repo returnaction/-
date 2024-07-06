@@ -36,27 +36,27 @@ namespace Сантехник.ServiceLayer.Services.Concrete
             return teamListVM;
         }
 
-        public async Task<TeamUpdateVM> GetCategoryById(int id)
+        public async Task<TeamUpdateVM> GetTeamById(int id)
         {
             TeamUpdateVM? team = await _repository.Where(x => x.Id == id).ProjectTo<TeamUpdateVM>(_mapper.ConfigurationProvider).SingleAsync();
             return team;
         }
 
-        public async Task AddCategoryService(TeamAddVM request)
+        public async Task AddTeamService(TeamAddVM request)
         {
             Team? team = _mapper.Map<Team>(request);
             await _repository.AddEntityAsync(team);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task UpdateCategoryAsync(TeamUpdateVM request)
+        public async Task UpdateTeamAsync(TeamUpdateVM request)
         {
             Team? team = _mapper.Map<Team>(request);
             _repository.UpdateEntity(team);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task DeleteCategoryAsync(int id)
+        public async Task DeleteTeamAsync(int id)
         {
             Team? team = await _repository.GetEntityByIdAsync(id);
             _repository.DeleteEntity(team);

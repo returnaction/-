@@ -36,27 +36,27 @@ namespace Сантехник.ServiceLayer.Services.Concrete
             return socialMediaListVM;
         }
 
-        public async Task<SocialMediaUpdateVM> GetCategoryById(int id)
+        public async Task<SocialMediaUpdateVM> GetSocialMediaById(int id)
         {
             SocialMediaUpdateVM? socialMedia = await _repository.Where(x => x.Id == id).ProjectTo<SocialMediaUpdateVM>(_mapper.ConfigurationProvider).SingleAsync();
             return socialMedia;
         }
 
-        public async Task AddCategoryService(SocialMediaAddVM request)
+        public async Task AddSocialMediaService(SocialMediaAddVM request)
         {
             SocialMedia? socialMedia = _mapper.Map<SocialMedia>(request);
             await _repository.AddEntityAsync(socialMedia);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task UpdateCategoryAsync(SocialMediaUpdateVM request)
+        public async Task UpdateSocialMediaAsync(SocialMediaUpdateVM request)
         {
             SocialMedia? socialMedia = _mapper.Map<SocialMedia>(request);
             _repository.UpdateEntity(socialMedia);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task DeleteCategoryAsync(int id)
+        public async Task DeleteSocialMediaAsync(int id)
         {
             SocialMedia? socialMedia = await _repository.GetEntityByIdAsync(id);
             _repository.DeleteEntity(socialMedia);

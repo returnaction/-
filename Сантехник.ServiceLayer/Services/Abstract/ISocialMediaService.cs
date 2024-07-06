@@ -9,10 +9,10 @@ namespace Сантехник.ServiceLayer.Services.Abstract
 {
     public interface ISocialMediaService
     {
-        Task AddCategoryService(SocialMediaAddVM request);
-        Task DeleteCategoryAsync(int id);
+        Task AddSocialMediaService(SocialMediaAddVM request);
+        Task DeleteSocialMediaAsync(int id);
         Task<List<SocialMediaListVM>> GetAllListAsync();
-        Task<SocialMediaUpdateVM> GetCategoryById(int id);
-        Task UpdateCategoryAsync(SocialMediaUpdateVM request);
+        Task<SocialMediaUpdateVM> GetSocialMediaById(int id);
+        Task UpdateSocialMediaAsync(SocialMediaUpdateVM request);
     }
 }
