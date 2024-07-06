@@ -36,27 +36,27 @@ namespace Сантехник.ServiceLayer.Services.Concrete
             return homePageListVM;
         }
 
-        public async Task<HomePageUpdateVM> GetCategoryById(int id)
+        public async Task<HomePageUpdateVM> GetHomePageById(int id)
         {
             HomePageUpdateVM? homePage = await _repository.Where(x => x.Id == id).ProjectTo<HomePageUpdateVM>(_mapper.ConfigurationProvider).SingleAsync();
             return homePage;
         }
 
-        public async Task AddCategoryService(HomePageAddVM request)
+        public async Task AddHomePageService(HomePageAddVM request)
         {
             HomePage? homePage = _mapper.Map<HomePage>(request);
             await _repository.AddEntityAsync(homePage);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task UpdateCategoryAsync(HomePageUpdateVM request)
+        public async Task UpdateHomePageAsync(HomePageUpdateVM request)
         {
             HomePage? homePage = _mapper.Map<HomePage>(request);
             _repository.UpdateEntity(homePage);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task DeleteCategoryAsync(int id)
+        public async Task DeleteHomePageAsync(int id)
         {
             HomePage? homePage = await _repository.GetEntityByIdAsync(id);
             _repository.DeleteEntity(homePage);
