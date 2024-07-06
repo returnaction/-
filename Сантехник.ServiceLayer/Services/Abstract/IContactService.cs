@@ -9,10 +9,10 @@ namespace Сантехник.ServiceLayer.Services.Abstract
 {
     public interface IContactService
     {
-        Task AddCategoryService(ContactAddVM request);
-        Task DeleteCategoryAsync(int id);
+        Task AddContactAsync(ContactAddVM request);
+        Task DeleteContactAsync(int id);
         Task<List<ContactListVM>> GetAllListAsync();
-        Task<ContactUpdateVM> GetCategoryById(int id);
-        Task UpdateCategoryAsync(ContactUpdateVM request);
+        Task<ContactUpdateVM> GetContactById(int id);
+        Task UpdateContactAsync(ContactUpdateVM request);
     }
 }
