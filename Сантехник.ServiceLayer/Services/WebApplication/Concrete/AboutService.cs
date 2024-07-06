@@ -10,11 +10,11 @@ using Сантехник.EntityLayer.WebApplication.Entities;
 using Сантехник.EntityLayer.WebApplication.ViewModels.AboutVM;
 using Сантехник.RepositoryLayer.Repositories.Abstract;
 using Сантехник.RepositoryLayer.UnitOfWork.Abstract;
-using Сантехник.ServiceLayer.Services.Abstract;
+using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 
-namespace Сантехник.ServiceLayer.Services.Concrete
+namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
 {
-    public class AboutService : IAboutService 
+    public class AboutService : IAboutService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;

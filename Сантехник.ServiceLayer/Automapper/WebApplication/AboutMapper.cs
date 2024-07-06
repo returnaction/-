@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Сантехник.EntityLayer.WebApplication.Entities;
 using Сантехник.EntityLayer.WebApplication.ViewModels.AboutVM;
 
-namespace Сантехник.ServiceLayer.Automapper
+namespace Сантехник.ServiceLayer.Automapper.WebApplication
 {
     public class AboutMapper : Profile
     {

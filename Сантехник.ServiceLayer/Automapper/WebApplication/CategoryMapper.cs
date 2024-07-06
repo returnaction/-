@@ -8,15 +8,15 @@ using Сантехник.EntityLayer.WebApplication.Entities;
 using Сантехник.EntityLayer.WebApplication.ViewModels.AboutVM;
 using Сантехник.EntityLayer.WebApplication.ViewModels.CategoryVM;
 
-namespace Сантехник.ServiceLayer.Automapper
+namespace Сантехник.ServiceLayer.Automapper.WebApplication
 {
     public class CategoryMapper : Profile
     {
         public CategoryMapper()
         {
-            CreateMap<Category,CategoryAddVM>().ReverseMap();
-            CreateMap<Category,CategoryListVM>().ReverseMap();
-            CreateMap<Category,CategoryUpdateVM>().ReverseMap();
+            CreateMap<Category, CategoryAddVM>().ReverseMap();
+            CreateMap<Category, CategoryListVM>().ReverseMap();
+            CreateMap<Category, CategoryUpdateVM>().ReverseMap();
         }
     }
 }

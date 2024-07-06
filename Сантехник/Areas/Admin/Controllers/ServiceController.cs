@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Сантехник.EntityLayer.WebApplication.Entities;
 using Сантехник.EntityLayer.WebApplication.ViewModels.ServiceVM;
-using Сантехник.ServiceLayer.Services.Abstract;
+using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 
 namespace Сантехник.Areas.Admin.Controllers
 {

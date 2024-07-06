@@ -8,7 +8,7 @@ using Сантехник.EntityLayer.WebApplication.Entities;
 using Сантехник.EntityLayer.WebApplication.ViewModels.TestimonialVM;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace Сантехник.ServiceLayer.Automapper
+namespace Сантехник.ServiceLayer.Automapper.WebApplication
 {
     public class TestimonialMapper : Profile
     {

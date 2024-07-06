@@ -11,9 +11,9 @@ using Сантехник.EntityLayer.WebApplication.ViewModels.CategoryVM;
 using Сантехник.EntityLayer.WebApplication.ViewModels.ContactVM;
 using Сантехник.RepositoryLayer.Repositories.Abstract;
 using Сантехник.RepositoryLayer.UnitOfWork.Abstract;
-using Сантехник.ServiceLayer.Services.Abstract;
+using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 
-namespace Сантехник.ServiceLayer.Services.Concrete
+namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
 {
     public class ContactService : IContactService
     {

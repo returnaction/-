@@ -8,7 +8,7 @@ using Сантехник.EntityLayer.WebApplication.Entities;
 using Сантехник.EntityLayer.WebApplication.ViewModels.AboutVM;
 using Сантехник.EntityLayer.WebApplication.ViewModels.ContactVM;
 
-namespace Сантехник.ServiceLayer.Automapper
+namespace Сантехник.ServiceLayer.Automapper.WebApplication
 {
     public class ContactMapper : Profile
     {

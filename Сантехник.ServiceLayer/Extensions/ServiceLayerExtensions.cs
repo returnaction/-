@@ -5,8 +5,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Сантехник.ServiceLayer.Services.Abstract;
-using Сантехник.ServiceLayer.Services.Concrete;
+using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
+using Сантехник.ServiceLayer.Services.WebApplication.Concrete;
 
 namespace Сантехник.ServiceLayer.Extensions
 {
@@ -24,7 +24,7 @@ namespace Сантехник.ServiceLayer.Extensions
             {
                 var iServiceType = serviceType.GetInterfaces().FirstOrDefault(x => x.Name == $"I{serviceType.Name}");
 
-                if(iServiceType != null)
+                if (iServiceType != null)
                 {
                     services.AddScoped(iServiceType, serviceType);
                 }

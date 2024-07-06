@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Сантехник.EntityLayer.WebApplication.ViewModels.TestimonialVM;
 
-namespace Сантехник.ServiceLayer.Services.Abstract
+namespace Сантехник.ServiceLayer.Services.WebApplication.Abstract
 {
     public interface ITestimonialService
     {

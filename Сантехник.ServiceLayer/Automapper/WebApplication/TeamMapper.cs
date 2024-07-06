@@ -8,7 +8,7 @@ using Сантехник.EntityLayer.WebApplication.Entities;
 using Сантехник.EntityLayer.WebApplication.ViewModels.TeamVM;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace Сантехник.ServiceLayer.Automapper
+namespace Сантехник.ServiceLayer.Automapper.WebApplication
 {
     public class TeamMapper : Profile
     {
