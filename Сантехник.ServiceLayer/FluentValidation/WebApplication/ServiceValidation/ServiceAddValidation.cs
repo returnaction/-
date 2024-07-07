@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Сантехник.EntityLayer.WebApplication.ViewModels.ServiceVM;
+using Сантехник.ServiceLayer.Messages.WebApplication;
 
 namespace Сантехник.ServiceLayer.FluentValidation.WebApplication.ServiceValidation
 {
@@ -13,14 +14,14 @@ namespace Сантехник.ServiceLayer.FluentValidation.WebApplication.Servic
         public ServiceAddValidation()
         {
             RuleFor(x => x.Name)
-               .NotNull()
-               .NotEmpty()
-               .MaximumLength(200);
+               .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Name"))
+               .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Name"))
+               .MaximumLength(200).WithMessage(ValidationMessages.MaximumCharacterAllowance("Name", 200));
             RuleFor(x => x.Description)
-                .NotNull()
-                .NotEmpty()
-                .MaximumLength(5000);
-            
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Description"))
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Description"))
+                .MaximumLength(5000).WithMessage(ValidationMessages.MaximumCharacterAllowance("Description", 5000));
+
             // For Icon do maybe later when realize how to manage it
         }
     }

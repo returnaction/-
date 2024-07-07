@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Сантехник.EntityLayer.WebApplication.ViewModels.CategoryVM;
+using Сантехник.ServiceLayer.Messages.WebApplication;
 
 namespace Сантехник.ServiceLayer.FluentValidation.WebApplication.CategoryValidation
 {
@@ -13,9 +14,9 @@ namespace Сантехник.ServiceLayer.FluentValidation.WebApplication.Catego
         public CategoryUpdateValidation()
         {
             RuleFor(x => x.Name)
-                .NotNull()
-                .NotEmpty()
-                .MaximumLength(50);
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Name"))
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Name"))
+                .MaximumLength(50).WithMessage(ValidationMessages.MaximumCharacterAllowance("Name", 50));
         }
     }
 }

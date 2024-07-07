@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Сантехник.EntityLayer.WebApplication.ViewModels.TeamVM;
+using Сантехник.ServiceLayer.Messages.WebApplication;
 
 namespace Сантехник.ServiceLayer.FluentValidation.WebApplication.TeamValidation
 {
@@ -13,19 +14,19 @@ namespace Сантехник.ServiceLayer.FluentValidation.WebApplication.TeamVa
         public TeamUpdateValidation()
         {
             RuleFor(x => x.FullName)
-             .NotNull()
-             .NotEmpty()
-             .MaximumLength(200);
+              .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("FullName"))
+              .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("FullName"))
+              .MaximumLength(200).WithMessage(ValidationMessages.MaximumCharacterAllowance("FullName", 5000));
             RuleFor(x => x.Title)
-                .NotNull()
-                .NotEmpty()
-                .MaximumLength(200);
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Title"))
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Title"))
+                .MaximumLength(200).WithMessage(ValidationMessages.MaximumCharacterAllowance("Title", 200));
             RuleFor(x => x.FileName)
-               .NotNull()
-               .NotEmpty();
+               .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("FileName"))
+               .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("FileName"));
             RuleFor(x => x.FileType)
-                .NotNull()
-                .NotEmpty();
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("FileName"))
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("FileName"));
         }
     }
 }

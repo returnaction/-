@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Сантехник.EntityLayer.WebApplication.ViewModels.HomePageVM;
+using Сантехник.ServiceLayer.Messages.WebApplication;
 
 namespace Сантехник.ServiceLayer.FluentValidation.WebApplication.HomePageValidation
 {
@@ -13,17 +14,17 @@ namespace Сантехник.ServiceLayer.FluentValidation.WebApplication.HomePa
         public HomePageUpdateValidation()
         {
             RuleFor(x => x.Header)
-                .NotNull()
-                .NotEmpty()
-                .MaximumLength(200);
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Header"))
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Header"))
+                .MaximumLength(200).WithMessage(ValidationMessages.MaximumCharacterAllowance("Header", 5000));
             RuleFor(x => x.Description)
-                .NotNull()
-                .NotEmpty()
-                .MaximumLength(5000);
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Description"))
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Description"))
+                .MaximumLength(5000).WithMessage(ValidationMessages.MaximumCharacterAllowance("Description", 5000));
             RuleFor(x => x.VideoLink)
-                .NotNull()
-                .NotEmpty();
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("VideoLink"))
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("VideoLink"));
         }
     }
-    
+
 }

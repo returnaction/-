@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Сантехник.EntityLayer.WebApplication.ViewModels.TestimonialVM;
+using Сантехник.ServiceLayer.Messages.WebApplication;
 
 namespace Сантехник.ServiceLayer.FluentValidation.WebApplication.TestimonialValidation
 {
@@ -13,23 +14,23 @@ namespace Сантехник.ServiceLayer.FluentValidation.WebApplication.Testim
         public TestimonialAddValidation()
         {
             RuleFor(x => x.Comment)
-             .NotNull()
-             .NotEmpty()
-             .MaximumLength(5000);
+             .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Comment"))
+             .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Comment"))
+             .MaximumLength(5000).WithMessage(ValidationMessages.MaximumCharacterAllowance("Comment", 5000));
             RuleFor(x => x.FullName)
-                .NotNull()
-                .NotEmpty()
-                .MaximumLength(200);
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Full Name"))
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Full Name"))
+                .MaximumLength(200).WithMessage(ValidationMessages.MaximumCharacterAllowance("Full Name", 200));
             RuleFor(x => x.Title)
-                .NotNull()
-                .NotEmpty()
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Title"))
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Title"))
                 .MaximumLength(200);
             RuleFor(x => x.FileName)
-               .NotNull()
-               .NotEmpty();
+               .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("FileName"))
+               .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("FileName"));
             RuleFor(x => x.FileType)
-                .NotNull()
-                .NotEmpty();
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("FileType"))
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("FileType"));
 
             // maybe add photo later
             //RuleFor(x => x.Photo)
