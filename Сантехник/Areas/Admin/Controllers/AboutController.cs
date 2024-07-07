@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Mvc;
 using Сантехник.EntityLayer.WebApplication.ViewModels.AboutVM;
 using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 
@@ -8,10 +10,14 @@ namespace Сантехник.Areas.Admin.Controllers
     public class AboutController : Controller
     {
         private readonly IAboutService _aboutService;
+        private readonly IValidator<AboutAddVM> _addValidator;
+        private readonly IValidator<AboutUpdateVM> _updateValidator;
 
-        public AboutController(IAboutService aboutService)
+        public AboutController(IAboutService aboutService, IValidator<AboutAddVM> addValidator, IValidator<AboutUpdateVM> updateValidator)
         {
             _aboutService = aboutService;
+            _addValidator = addValidator;
+            _updateValidator = updateValidator;
         }
 
         public async Task<IActionResult> GetAboutList()
@@ -29,8 +35,15 @@ namespace Сантехник.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAbout(AboutAddVM request)
         {
-            await _aboutService.AddAboutAsync(request);
-            return RedirectToAction("GetAboutList", "About", new { Area = ("Admin") });
+            var validation = await _addValidator.ValidateAsync(request);
+            if (validation.IsValid)
+            {
+                await _aboutService.AddAboutAsync(request);
+                return RedirectToAction("GetAboutList", "About", new { Area = ("Admin") });
+            }
+
+            validation.AddToModelState(this.ModelState);
+            return View(request);
         }
 
 
@@ -46,7 +59,7 @@ namespace Сантехник.Areas.Admin.Controllers
             await _aboutService.UpdateAboutAsync(request);
             return RedirectToAction("GetAboutList", "About", new { Area = ("Admin") });
         }
-        
+
 
         public async Task<IActionResult> DeleteAbout(int id)
         {
