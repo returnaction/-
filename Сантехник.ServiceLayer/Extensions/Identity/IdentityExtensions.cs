@@ -34,7 +34,7 @@ namespace Сантехник.ServiceLayer.Extensions.Identity
             services.ConfigureApplicationCookie(options =>
             {
                 var newCookie = new CookieBuilder();
-                newCookie.Name = new PathString("PlumbingCompany");
+                newCookie.Name = "PlumbingCompany";
                 options.LoginPath = new PathString("/Authentication/Login");  // add thos later
                 options.LogoutPath = new PathString("/Authentication/Logout");// add thos later
                 options.AccessDeniedPath = new PathString("/Authentication/AccessDenied");// add thos later
