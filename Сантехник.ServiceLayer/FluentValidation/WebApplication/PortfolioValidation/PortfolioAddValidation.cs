@@ -17,17 +17,7 @@ namespace Сантехник.ServiceLayer.FluentValidation.WebApplication.Portfo
                 .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Title"))
                 .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Title"))
                 .MaximumLength(200).WithMessage(ValidationMessages.MaximumCharacterAllowance("Title", 200));
-            RuleFor(x => x.FileName)
-                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("FileName"))
-                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("FileName"));
-            RuleFor(x => x.FileType)
-                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("FileType"))
-                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("FileType"));
 
-            // maybe add photo later
-            //RuleFor(x => x.Photo)
-            //    .NotNull()
-            //    .NotEmpty();
         }
     }
 }
