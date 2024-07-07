@@ -56,8 +56,16 @@ namespace Сантехник.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateAbout(AboutUpdateVM request)
         {
-            await _aboutService.UpdateAboutAsync(request);
-            return RedirectToAction("GetAboutList", "About", new { Area = ("Admin") });
+            var validation = await _updateValidator.ValidateAsync(request);
+            if (validation.IsValid)
+            {
+
+                await _aboutService.UpdateAboutAsync(request);
+                return RedirectToAction("GetAboutList", "About", new { Area = ("Admin") });
+            }
+
+            validation.AddToModelState(this.ModelState);
+            return View(request);
         }
 
 
