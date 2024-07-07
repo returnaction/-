@@ -58,3 +58,10 @@ namespace Сантехник
 // AsNoTracking()
 
 //TODO Update doesn't record the type of being updated. Add later
+
+
+// Dont delete this link some how I managed to find that link to create an app password
+// https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4Ndf5cYqsqcBR3csOq2B-Zux7WCb_poDjlzDq_mK5a2H3pY7ihd61k5DXUpx8GcZgYE-e2HXHReTr2DBdy89Kw3zuMKxh4ZuArBV0J2HFLEczv3gYk
+
+// YouTubeHelper
+// flca lhbd qdsk wamh

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Сантехник.EntityLayer.Identity;
 using Сантехник.EntityLayer.Identity.ViewModels;
-using Сантехник.ServiceLayer.Helpers.Identity;
+using Сантехник.ServiceLayer.Helpers.Identity.ModelStateHelper;
 
 namespace Сантехник.Controllers
 {
@@ -16,10 +16,11 @@ namespace Сантехник.Controllers
 
         private readonly IValidator<SignUpVM> _signUpValidator;
         private readonly IValidator<LogInVM> _logInValidator;
+        private readonly IValidator<ForgotPasswordVM> _forgotPasswordValidator;
 
         private readonly IMapper _iMapper;
 
-        public AuthenticationController(UserManager<AppUser> userManager, IValidator<SignUpVM> signUpValidator, IMapper iMapper, IValidator<LogInVM> logInValidator, SignInManager<AppUser> signInManager)
+        public AuthenticationController(UserManager<AppUser> userManager, IValidator<SignUpVM> signUpValidator, IMapper iMapper, IValidator<LogInVM> logInValidator, SignInManager<AppUser> signInManager, IValidator<ForgotPasswordVM> forgotPasswordValidator)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -28,6 +29,7 @@ namespace Сантехник.Controllers
             _logInValidator = logInValidator;
 
             _iMapper = iMapper;
+            _forgotPasswordValidator = forgotPasswordValidator;
         }
 
         public IActionResult SignUp()
@@ -58,6 +60,8 @@ namespace Сантехник.Controllers
 
             return RedirectToAction("LogIn", "Authenticaion");
         }
+
+
 
         public IActionResult LogIn()
         {
@@ -105,6 +109,39 @@ namespace Сантехник.Controllers
             ViewBag.Result = "FailedAttempt";
             ModelState.AddModelErrorList(new List<string> { $"Email or Password is wrong! Failed attempt {await _userManager.GetAccessFailedCountAsync(hasUser)}" });
             return View();
+        }
+
+
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordVM request)
+        {
+            // validate the prompt
+            var validation = await _forgotPasswordValidator.ValidateAsync(request);
+            if (!validation.IsValid)
+            {
+                validation.AddToModelState(this.ModelState);
+                return View(request);
+            }
+
+            var hasUser = await _userManager.FindByEmailAsync(request.Email);
+            // can't find user
+            if(hasUser is null)
+            {
+                ViewBag.Result = "UserDoesNotExist";
+                ModelState.AddModelErrorList(new List<string> { "User does not exist!" });
+                return View();
+            }
+
+            // found user
+            string resetToken = await _userManager.GeneratePasswordResetTokenAsync(hasUser);
+            var passwordResetLink = Url.Action("ResetPassword", "Authentication", new { UserId = hasUser.Id, Token = resetToken, HttpContext.Request.Scheme });
+
+
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Сантехник.ServiceLayer.Helpers.Identity
+namespace Сантехник.ServiceLayer.Helpers.Identity.ModelStateHelper
 {
     public static class ModelErrorHelper
     {
