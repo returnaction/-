@@ -11,7 +11,7 @@ namespace Сантехник.ServiceLayer.Automapper.Identity
 {
     public class LogInMapper : Profile
     {
-        protected LogInMapper()
+        public LogInMapper()
         {
             CreateMap<AppUser, LogInVM>().ReverseMap();
         }
