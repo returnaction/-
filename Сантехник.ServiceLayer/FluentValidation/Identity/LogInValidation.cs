@@ -16,8 +16,7 @@ namespace Сантехник.ServiceLayer.FluentValidation.Identity
         {
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Email"))
-                .Null().WithMessage(ValidationMessages.NullEmptyMessage("Email"))
-                .EmailAddress().WithMessage(IdentityMessages.CheckEmailAddress());
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Email"));
             RuleFor(x => x.Password)
                 .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Password"))
                 .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Password"));

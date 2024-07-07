@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Сантехник.EntityLayer.WebApplication.ViewModels.SocialMediaVM;
 using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 
 namespace Сантехник.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class SocialMediaController : Controller
     {
