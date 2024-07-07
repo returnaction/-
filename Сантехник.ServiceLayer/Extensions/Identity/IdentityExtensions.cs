@@ -24,7 +24,7 @@ namespace Сантехник.ServiceLayer.Extensions.Identity
                 options.Password.RequiredUniqueChars = 2;
                 options.Password.RequireDigit = true;
 
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(15);
                 options.Lockout.MaxFailedAccessAttempts = 15;
             })
                 .AddRoleManager<RoleManager<AppRole>>()
@@ -35,8 +35,8 @@ namespace Сантехник.ServiceLayer.Extensions.Identity
             {
                 var newCookie = new CookieBuilder();
                 newCookie.Name = "PlumbingCompany";
-                options.LoginPath = new PathString("/Authentication/Login");  // add thos later
-                options.LogoutPath = new PathString("/Authentication/Logout");// add thos later
+                options.LoginPath = new PathString("/Authentication/Login");  
+                options.LogoutPath = new PathString("/Authentication/Logout");
                 options.AccessDeniedPath = new PathString("/Authentication/AccessDenied");// add thos later
                 options.Cookie = newCookie;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(60); // cooking expriration time
