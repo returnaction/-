@@ -18,12 +18,14 @@
 
         <!-- Floating Labels Form -->
         <form asp-area="Admin" asp-controller="Category" asp-action="UpdateCategory" class="row g-3" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="RowVersion" />
             <div class="col-md-12">
                 <div class="form-floating">
                     <input asp-for="Name" type="text" class="form-control" placeholder="Name">
                     <label asp-for="Name">Name</label>
+                    <span asp-validation-for="Name"></span>
                 </div>
             </div>
 
