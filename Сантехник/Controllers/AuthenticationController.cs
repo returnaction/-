@@ -72,7 +72,6 @@ namespace Сантехник.Controllers
             var validation = await _logInValidator.ValidateAsync(request);
             if (!validation.IsValid)
             {
-                ViewBag.Result = "NotSucceed";
                 validation.AddToModelState(this.ModelState);
                 return View(request);
             }
