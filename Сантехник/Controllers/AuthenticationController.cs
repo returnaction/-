@@ -41,6 +41,7 @@ namespace Сантехник.Controllers
             var userCreateRusult = await _userManager.CreateAsync(user, request.Password);
             if (!userCreateRusult.Succeeded)
             {
+                ViewBag.Result = "NotSucceed";
                 ModelState.AddModelErrorList(userCreateRusult.Errors);
                 return View();
             }
