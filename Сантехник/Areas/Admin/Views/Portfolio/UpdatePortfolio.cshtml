@@ -22,6 +22,7 @@
 
         <!-- Floating Labels Form -->
         <form asp-area="Admin" asp-controller="Portfolio" asp-action="UpdatePortfolio" class="row g-3" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="RowVersion" />
             
@@ -31,14 +32,17 @@
             <div class="col-md-12">
                 <div class="form-floating">
                     <input asp-for="Title" type="text" class="form-control" placeholder="Title">
-                    <label asp-for="Title">Location</label>
+                    <label asp-for="Title">Title</label>
+                    <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
             </div>
 
+            @* THis needs to be changed later it has to choose between new categories *@
             <div class="col-md-12">
                 <div class="form-floating">
                     <input asp-for="Category.Name" type="text" class="form-control" placeholder="Category Name">
                     <label asp-for="Category.Name">Category Name</label>
+                    <span asp-validation-for="Category.Name" class="text-danger"></span>
                 </div>
             </div>
 
@@ -47,6 +51,7 @@
                 <div class="form-floating">
                     <input asp-for="Photo" type="file" accept="image/*" class="form-control" placeholder="Photo">
                     <label asp-for="Photo">Photo</label>
+                    <span asp-validation-for="Photo" class="text-danger"></span>
                 </div>
             </div>
 
