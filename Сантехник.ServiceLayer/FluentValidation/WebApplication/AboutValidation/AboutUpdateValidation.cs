@@ -40,5 +40,3 @@ namespace Сантехник.ServiceLayer.FluentValidation.WebApplication.AboutV
         }
     }
 }
-
-// .WithMessage(ValidationMessages.MaximumCharacterAllowance("Header", 5000));
