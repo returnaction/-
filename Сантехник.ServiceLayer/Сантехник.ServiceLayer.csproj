@@ -14,10 +14,11 @@
     <Folder Include="Automapper\Identity\" />
     <Folder Include="Exceptions\Identity\" />
     <Folder Include="Exceptions\WebApplication\" />
+    <Folder Include="Extensions\Identity\" />
+    <Folder Include="Extensions\WebApplication\" />
     <Folder Include="Filters\Identity\" />
     <Folder Include="Filters\WebApplication\" />
     <Folder Include="FluentValidation\Identity\" />
-    <Folder Include="FluentValidation\WebApplication\" />
     <Folder Include="Helpers\Identity\" />
     <Folder Include="Helpers\WebApplication\" />
     <Folder Include="Messages\Identity\" />
