@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Сантехник.ServiceLayer.FluentValidation.WebApplication.HomePageValidation;
 using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 using Сантехник.ServiceLayer.Services.WebApplication.Concrete;
+using Сантехник.ServiceLayer.Extensions.Identity;
 
 namespace Сантехник.ServiceLayer.Extensions
 {
@@ -17,6 +18,8 @@ namespace Сантехник.ServiceLayer.Extensions
     {
         public static IServiceCollection LoadServiceLayerExtensions(this IServiceCollection services)
         {
+            services.LoadIdentityExtensions();
+
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             //services.AddScoped<IAboutService, AboutService>(); silly way to add services. One bellow is better.
