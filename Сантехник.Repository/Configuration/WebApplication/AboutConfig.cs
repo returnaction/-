@@ -18,6 +18,10 @@ namespace Сантехник.RepositoryLayer.Configuration.WebApplication
             builder.Property(x => x.UpdateDate).HasMaxLength(10);
             builder.Property(x => x.RowVersion).IsRowVersion(); // for update
 
+            builder.Property(x => x.FileName).IsRequired();
+            builder.Property(x => x.FileType).IsRequired();
+
+
             builder.Property(x => x.Header).IsRequired().HasMaxLength(5000);
             builder.Property(x => x.Description).IsRequired().HasMaxLength(5000);
             builder.Property(x => x.Clients).IsRequired().HasMaxLength(5);
