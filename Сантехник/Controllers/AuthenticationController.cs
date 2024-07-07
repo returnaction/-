@@ -50,5 +50,16 @@ namespace Сантехник.Controllers
 
             return RedirectToAction("LogIn", "Authenticaion");
         }
+
+        public IActionResult LogIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public Task<IActionResult> LogIn(LogInVM request)
+        {
+
+        }
     }
 }
