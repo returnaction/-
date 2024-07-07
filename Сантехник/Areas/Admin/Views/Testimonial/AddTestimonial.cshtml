@@ -19,6 +19,7 @@
 
         <!-- Floating Labels Form -->
         <form asp-area="Admin" asp-controller="Testimonial" asp-action="AddTestimonial" class="row g-3" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="FileName" value="test" /> @* Delete this later when add photo functionallity *@
             <input type="hidden" asp-for="FileType" value="test" /> @* Delete this later when add photo functionallity *@
 
@@ -26,18 +27,21 @@
                 <div class="form-floating">
                     <textarea asp-for="Comment" type="text" class="form-control" placeholder="Comment"></textarea>
                     <label asp-for="Comment">Comment</label>
+                    <span asp-validation-for="Comment" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-floating">
                     <input asp-for="FullName" type="text" class="form-control" placeholder="Full Name">
                     <label asp-for="FullName">Full Name</label>
+                    <span asp-validation-for="FullName" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-floating">
                     <input asp-for="Title" type="text" class="form-control" placeholder="Title">
                     <label asp-for="Title">Title</label>
+                    <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
             </div>
 
@@ -46,6 +50,7 @@
                 <div class="form-floating">
                     <input asp-for="Photo" type="file" accept="image/*" class="form-control" placeholder="Photo">
                     <label asp-for="Photo">Photo</label>
+                    <span asp-validation-for="Photo" class="text-danger"></span>
                 </div>
             </div>
 

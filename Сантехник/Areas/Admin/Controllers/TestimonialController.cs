@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Mvc;
 using Сантехник.EntityLayer.WebApplication.ViewModels.TestimonialVM;
 using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 
@@ -8,13 +10,16 @@ namespace Сантехник.Areas.Admin.Controllers
     public class TestimonialController : Controller
     {
         private readonly ITestimonialService _testimonialService;
+        private readonly IValidator<TestimonialAddVM> _addTestimonial;
+        private readonly IValidator<TestimonialUpdateVM> _updateTestimonial;
 
-        public TestimonialController(ITestimonialService testimonialService)
+        public TestimonialController(ITestimonialService testimonialService, IValidator<TestimonialAddVM> addTestimonial, IValidator<TestimonialUpdateVM> updateTestimonial)
         {
             _testimonialService = testimonialService;
+            _addTestimonial = addTestimonial;
+            _updateTestimonial = updateTestimonial;
         }
 
-        
         public async Task<IActionResult> GetTestimonialList()
         {
             var testimonialList = await _testimonialService.GetAllListAsync();
@@ -29,8 +34,15 @@ namespace Сантехник.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> AddTestimonial(TestimonialAddVM request)
         {
-            await _testimonialService.AddTestimonialService(request);
-            return RedirectToAction("GetTestimonialList", "Testimonial", new { Area = ("Admin") });
+            var validation = await _addTestimonial.ValidateAsync(request);
+            if (validation.IsValid)
+            {
+                await _testimonialService.AddTestimonialService(request);
+                return RedirectToAction("GetTestimonialList", "Testimonial", new { Area = ("Admin") });
+            }
+
+            validation.AddToModelState(this.ModelState);
+            return View(request);
         }
 
         public async Task<IActionResult> UpdateTestimonial(int id)
@@ -42,8 +54,15 @@ namespace Сантехник.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateTestimonial(TestimonialUpdateVM request)
         {
-            await _testimonialService.UpdateTestimonialAsync(request);
-            return RedirectToAction("GetTestimonialList", "Testimonial", new { Area = ("Admin") });
+            var validation = await _updateTestimonial.ValidateAsync(request);
+            if (validation.IsValid)
+            {
+                await _testimonialService.UpdateTestimonialAsync(request);
+                return RedirectToAction("GetTestimonialList", "Testimonial", new { Area = ("Admin") });
+            }
+
+            validation.AddToModelState(this.ModelState);
+            return View(request);
         }
 
         public async Task<IActionResult> DeleteTestimonial(int id)
