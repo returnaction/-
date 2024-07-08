@@ -13,7 +13,7 @@ namespace Сантехник
             builder.Services.AddControllersWithViews();
 
             builder.Services.LoadRepositoryLayerExtensions(builder.Configuration);
-            builder.Services.LoadServiceLayerExtensions();
+            builder.Services.LoadServiceLayerExtensions(builder.Configuration);
 
             var app = builder.Build();
 

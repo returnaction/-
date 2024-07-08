@@ -11,14 +11,15 @@ using Сантехник.ServiceLayer.FluentValidation.WebApplication.HomePageVa
 using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 using Сантехник.ServiceLayer.Services.WebApplication.Concrete;
 using Сантехник.ServiceLayer.Extensions.Identity;
+using Microsoft.Extensions.Configuration;
 
 namespace Сантехник.ServiceLayer.Extensions
 {
     public static class ServiceLayerExtensions
     {
-        public static IServiceCollection LoadServiceLayerExtensions(this IServiceCollection services)
+        public static IServiceCollection LoadServiceLayerExtensions(this IServiceCollection services, IConfiguration config)
         {
-            services.LoadIdentityExtensions();
+            services.LoadIdentityExtensions(config);
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
