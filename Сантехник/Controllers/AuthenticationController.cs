@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
@@ -9,6 +10,7 @@ using Сантехник.EntityLayer.Identity;
 using Сантехник.EntityLayer.Identity.ViewModels;
 using Сантехник.ServiceLayer.Helpers.Identity.EmailHelper;
 using Сантехник.ServiceLayer.Helpers.Identity.ModelStateHelper;
+using Сантехник.ServiceLayer.Services.Identity.Abstract;
 
 namespace Сантехник.Controllers
 {
@@ -23,10 +25,10 @@ namespace Сантехник.Controllers
         private readonly IValidator<ResetPasswordVM> _resetPasswordValidator;
 
         private readonly IMapper _iMapper;
-        private readonly IEmailSendMethod _emailSendMethod;
+        private readonly IAuthenticationCustomService _authenticationCustomService;
 
 
-        public AuthenticationController(UserManager<AppUser> userManager, IValidator<SignUpVM> signUpValidator, IMapper iMapper, IValidator<LogInVM> logInValidator, SignInManager<AppUser> signInManager, IValidator<ForgotPasswordVM> forgotPasswordValidator, IEmailSendMethod emailSendMethod, IValidator<ResetPasswordVM> resetPasswordValidator)
+        public AuthenticationController(UserManager<AppUser> userManager, IValidator<SignUpVM> signUpValidator, IMapper iMapper, IValidator<LogInVM> logInValidator, SignInManager<AppUser> signInManager, IValidator<ForgotPasswordVM> forgotPasswordValidator, IValidator<ResetPasswordVM> resetPasswordValidator, IAuthenticationCustomService authenticationCustomService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -36,8 +38,9 @@ namespace Сантехник.Controllers
 
             _iMapper = iMapper;
             _forgotPasswordValidator = forgotPasswordValidator;
-            _emailSendMethod = emailSendMethod;
+
             _resetPasswordValidator = resetPasswordValidator;
+            _authenticationCustomService = authenticationCustomService;
         }
 
         public IActionResult SignUp()
@@ -55,7 +58,7 @@ namespace Сантехник.Controllers
                 return View(request);
             }
 
-            var user = _iMapper.Map<AppUser>(request);
+            var user = _iMapper.Map<AppUser>(request); // this should go to service layer
             var userCreateRusult = await _userManager.CreateAsync(user, request.Password);
             if (!userCreateRusult.Succeeded)
             {
@@ -146,10 +149,7 @@ namespace Сантехник.Controllers
             }
 
             // found user
-            string resetToken = await _userManager.GeneratePasswordResetTokenAsync(hasUser);
-            var passwordResetLink = Url.Action("ResetPassword", "Authentication", new { userId = hasUser.Id, token = resetToken }, HttpContext.Request.Scheme);
-
-            await _emailSendMethod.SendPasswordResetLinkWithToken(passwordResetLink!, request.Email);
+            await _authenticationCustomService.CreateResetCreadentialsAndSend(hasUser, HttpContext, Url, request);
 
             return RedirectToAction("LogIn", "Authentication");
 
