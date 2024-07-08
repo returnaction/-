@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -7,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Сантехник.EntityLayer.Identity;
+using Сантехник.EntityLayer.Identity.ViewModels;
 using Сантехник.RepositoryLayer.Context;
 
 namespace Сантехник.ServiceLayer.Extensions.Identity
 {
     public static class IdentityExtensions
     {
-        public static IServiceCollection LoadIdentityExtensions(this IServiceCollection services)
+        public static IServiceCollection LoadIdentityExtensions(this IServiceCollection services, IConfiguration config)
         {
 
             services.AddIdentity<AppUser, AppRole>(options =>
@@ -41,6 +43,8 @@ namespace Сантехник.ServiceLayer.Extensions.Identity
                 options.Cookie = newCookie;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(60); // cooking expriration time
             });
+
+            services.Configure<GmailInformationVM>(config.GetSection("EmailSettings"));
 
             return services;
         }
