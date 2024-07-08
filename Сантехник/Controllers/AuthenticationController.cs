@@ -3,8 +3,10 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using Сантехник.EntityLayer.Identity;
 using Сантехник.EntityLayer.Identity.ViewModels;
+using Сантехник.ServiceLayer.Helpers.Identity.EmailHelper;
 using Сантехник.ServiceLayer.Helpers.Identity.ModelStateHelper;
 
 namespace Сантехник.Controllers
@@ -19,8 +21,10 @@ namespace Сантехник.Controllers
         private readonly IValidator<ForgotPasswordVM> _forgotPasswordValidator;
 
         private readonly IMapper _iMapper;
+        private readonly IEmailSendMethod _emailSendMethod;
 
-        public AuthenticationController(UserManager<AppUser> userManager, IValidator<SignUpVM> signUpValidator, IMapper iMapper, IValidator<LogInVM> logInValidator, SignInManager<AppUser> signInManager, IValidator<ForgotPasswordVM> forgotPasswordValidator)
+
+        public AuthenticationController(UserManager<AppUser> userManager, IValidator<SignUpVM> signUpValidator, IMapper iMapper, IValidator<LogInVM> logInValidator, SignInManager<AppUser> signInManager, IValidator<ForgotPasswordVM> forgotPasswordValidator, IEmailSendMethod emailSendMethod)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -30,6 +34,7 @@ namespace Сантехник.Controllers
 
             _iMapper = iMapper;
             _forgotPasswordValidator = forgotPasswordValidator;
+            _emailSendMethod = emailSendMethod;
         }
 
         public IActionResult SignUp()
@@ -141,6 +146,9 @@ namespace Сантехник.Controllers
             string resetToken = await _userManager.GeneratePasswordResetTokenAsync(hasUser);
             var passwordResetLink = Url.Action("ResetPassword", "Authentication", new { UserId = hasUser.Id, Token = resetToken, HttpContext.Request.Scheme });
 
+            await _emailSendMethod.SendPasswordResetLinkWithToken(passwordResetLink!, request.Email);
+
+            return RedirectToAction("LogIn", "Authentication");
 
         }
     }
