@@ -45,10 +45,7 @@ namespace Сантехник.ServiceLayer.Extensions.Identity
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(60); // cooking expriration time
             });
 
-            services.Configure<DataProtectionTokenProviderOptions>(opt =>
-            {
-                services.Configure<DataProtectionTokenProviderOptions>(opt => opt.TokenLifespan = TimeSpan.FromMinutes(60));
-            });
+            services.Configure<DataProtectionTokenProviderOptions>(opt => opt.TokenLifespan = TimeSpan.FromMinutes(60));
 
             services.AddScoped<IEmailSendMethod, EmailSendMethod>();
 

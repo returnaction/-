@@ -4,6 +4,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using Сантехник.EntityLayer.Identity;
 using Сантехник.EntityLayer.Identity.ViewModels;
 using Сантехник.ServiceLayer.Helpers.Identity.EmailHelper;
@@ -19,12 +20,13 @@ namespace Сантехник.Controllers
         private readonly IValidator<SignUpVM> _signUpValidator;
         private readonly IValidator<LogInVM> _logInValidator;
         private readonly IValidator<ForgotPasswordVM> _forgotPasswordValidator;
+        private readonly IValidator<ResetPasswordVM> _resetPasswordValidator;
 
         private readonly IMapper _iMapper;
         private readonly IEmailSendMethod _emailSendMethod;
 
 
-        public AuthenticationController(UserManager<AppUser> userManager, IValidator<SignUpVM> signUpValidator, IMapper iMapper, IValidator<LogInVM> logInValidator, SignInManager<AppUser> signInManager, IValidator<ForgotPasswordVM> forgotPasswordValidator, IEmailSendMethod emailSendMethod)
+        public AuthenticationController(UserManager<AppUser> userManager, IValidator<SignUpVM> signUpValidator, IMapper iMapper, IValidator<LogInVM> logInValidator, SignInManager<AppUser> signInManager, IValidator<ForgotPasswordVM> forgotPasswordValidator, IEmailSendMethod emailSendMethod, IValidator<ResetPasswordVM> resetPasswordValidator)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -35,6 +37,7 @@ namespace Сантехник.Controllers
             _iMapper = iMapper;
             _forgotPasswordValidator = forgotPasswordValidator;
             _emailSendMethod = emailSendMethod;
+            _resetPasswordValidator = resetPasswordValidator;
         }
 
         public IActionResult SignUp()
@@ -63,7 +66,7 @@ namespace Сантехник.Controllers
 
             // if success;
 
-            return RedirectToAction("LogIn", "Authenticaion");
+            return RedirectToAction("LogIn", "Authentication");
         }
 
 
@@ -144,12 +147,68 @@ namespace Сантехник.Controllers
 
             // found user
             string resetToken = await _userManager.GeneratePasswordResetTokenAsync(hasUser);
-            var passwordResetLink = Url.Action("ResetPassword", "Authentication", new { UserId = hasUser.Id, Token = resetToken, HttpContext.Request.Scheme });
+            var passwordResetLink = Url.Action("ResetPassword", "Authentication", new { userId = hasUser.Id, token = resetToken }, HttpContext.Request.Scheme);
 
             await _emailSendMethod.SendPasswordResetLinkWithToken(passwordResetLink!, request.Email);
 
             return RedirectToAction("LogIn", "Authentication");
 
+        }
+
+
+        public IActionResult ResetPassword(string userId, string token, List<string> errors)
+        {
+            TempData["UserId"] = userId;
+            TempData["Token"] = token;
+
+            if (errors.Any())
+            {
+                ViewBag.Result = "Error";
+                ModelState.AddModelErrorList(errors);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM request)
+        {
+            var userId = TempData["UserId"];
+            var token = TempData["Token"];
+
+            if (userId is null || token is null)
+            {
+                return RedirectToAction("LogIn", "Authentication");
+            }
+
+            var validation = await _resetPasswordValidator.ValidateAsync(request);
+            if (!validation.IsValid)
+            {
+                List<string> errors = validation.Errors.Select(x => x.ErrorMessage).ToList();
+                return RedirectToAction("ResetPassword", "Authentication", new { userId, token, errors });
+            }
+
+            var hasUser = await _userManager.FindByIdAsync(userId.ToString()!);
+            if (hasUser is null)
+            {
+                return RedirectToAction("LogIn", "Authentication");
+            }
+
+            var resetPasswordResult = await _userManager.ResetPasswordAsync(hasUser!, token.ToString()!, request.Password);
+            if (resetPasswordResult.Succeeded)
+            {
+                return RedirectToAction("LogIn", "Authentication");
+            }
+            else
+            {
+                List<string> errors = resetPasswordResult.Errors.Select(x => x.Description).ToList();
+                return RedirectToAction("ResetPassword", "Authentication", new { userId, token, errors });
+            }
+        }
+
+
+        public IActionResult AccessDenies()
+        {
+            return View();
         }
     }
 }
