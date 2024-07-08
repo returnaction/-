@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Сантехник.EntityLayer.Identity;
 using Сантехник.EntityLayer.Identity.ViewModels;
 using Сантехник.RepositoryLayer.Context;
+using Сантехник.ServiceLayer.Helpers.Identity.EmailHelper;
 
 namespace Сантехник.ServiceLayer.Extensions.Identity
 {
@@ -43,6 +44,8 @@ namespace Сантехник.ServiceLayer.Extensions.Identity
                 options.Cookie = newCookie;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(60); // cooking expriration time
             });
+
+            services.AddScoped<IEmailSendMethod, EmailSendMethod>();
 
             services.Configure<GmailInformationVM>(config.GetSection("EmailSettings"));
 
