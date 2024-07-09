@@ -12,6 +12,7 @@ using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 using Сантехник.ServiceLayer.Services.WebApplication.Concrete;
 using Сантехник.ServiceLayer.Extensions.Identity;
 using Microsoft.Extensions.Configuration;
+using Сантехник.ServiceLayer.Helpers.Generic.Image;
 
 namespace Сантехник.ServiceLayer.Extensions
 {
@@ -20,6 +21,7 @@ namespace Сантехник.ServiceLayer.Extensions
         public static IServiceCollection LoadServiceLayerExtensions(this IServiceCollection services, IConfiguration config)
         {
             services.LoadIdentityExtensions(config);
+            
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
@@ -41,6 +43,7 @@ namespace Сантехник.ServiceLayer.Extensions
 
             //this method finds that class in out assembly and select it and add the rest of validators in out project. (Maybe not )
             services.AddValidatorsFromAssemblyContaining<HomePageAddValidation>();
+            services.AddScoped<IImageHelper, ImageHelper>();
             return services;
         }
 
