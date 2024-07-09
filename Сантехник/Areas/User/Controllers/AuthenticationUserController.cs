@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Сантехник.EntityLayer.Identity;
+using Сантехник.EntityLayer.Identity.ViewModels;
 
 namespace Сантехник.Areas.User.Controllers
 {
