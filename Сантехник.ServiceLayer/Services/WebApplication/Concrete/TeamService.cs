@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Сантехник.CoreLayer.Enumerators;
 using Сантехник.EntityLayer.WebApplication.Entities;
 using Сантехник.EntityLayer.WebApplication.ViewModels.CategoryVM;
 using Сантехник.EntityLayer.WebApplication.ViewModels.TeamVM;
 using Сантехник.RepositoryLayer.Repositories.Abstract;
 using Сантехник.RepositoryLayer.UnitOfWork.Abstract;
+using Сантехник.ServiceLayer.Helpers.Generic.Image;
 using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 
 namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
@@ -20,12 +22,14 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IGenericRepositories<Team> _repository;
+        private readonly IImageHelper _imageHelper;
 
-        public TeamService(IUnitOfWork unitOfWork, IMapper mapper)
+        public TeamService(IUnitOfWork unitOfWork, IMapper mapper, IImageHelper imageHelper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _repository = _unitOfWork.GetGenericRepository<Team>();
+            _imageHelper = imageHelper;
         }
 
 
@@ -44,6 +48,17 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
 
         public async Task AddTeamService(TeamAddVM request)
         {
+
+            var imageResult = await _imageHelper.ImageUpload(request.Photo, ImageType.team, null);
+
+            if (imageResult.Error != null)
+            {
+                return;
+            }
+
+            request.FileName = imageResult.Filename!;
+            request.FileType = imageResult.FileType!;
+
             Team? team = _mapper.Map<Team>(request);
             await _repository.AddEntityAsync(team);
             await _unitOfWork.CommitAsync();
@@ -51,6 +66,16 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
 
         public async Task UpdateTeamAsync(TeamUpdateVM request)
         {
+            var imageResult = await _imageHelper.ImageUpload(request.Photo, ImageType.team, null);
+
+            if (imageResult.Error != null)
+            {
+                return;
+            }
+
+            request.FileName = imageResult.Filename!;
+            request.FileType = imageResult.FileType!;
+
             Team? team = _mapper.Map<Team>(request);
             _repository.UpdateEntity(team);
             await _unitOfWork.CommitAsync();
@@ -61,6 +86,8 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
             Team? team = await _repository.GetEntityByIdAsync(id);
             _repository.DeleteEntity(team);
             await _unitOfWork.CommitAsync();
+
+            _imageHelper.DeleteImage(team.FileName);
         }
     }
 }

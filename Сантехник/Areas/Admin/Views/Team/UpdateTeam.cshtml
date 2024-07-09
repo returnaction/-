@@ -13,7 +13,7 @@
 </nav>
 
 <div class="card">
-    <img src="~/NiceAdmin/assets/img/card.jpg" class="card-img-top" style="width:300px" alt="..." />
+    <img src="~/images/@Model.FileName" class="card-img-top" style="width:300px" alt="..." />
 </div>
 
 
@@ -25,9 +25,6 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden"  asp-for="Id" />
             <input type="hidden"  asp-for="RowVersion" />
-
-            <input type="hidden" asp-for="FileName" value="test" /> @* Delete this later when add photo functionallity *@
-            <input type="hidden" asp-for="FileType" value="test" /> @* Delete this later when add photo functionallity *@
 
             <div class="col-md-12">
                 <div class="form-floating">
