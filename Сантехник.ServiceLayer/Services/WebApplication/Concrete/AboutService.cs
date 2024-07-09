@@ -84,6 +84,8 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
             About? about = await _repository.GetEntityByIdAsync(id);
             _repository.DeleteEntity(about);
             await _unitOfWork.CommitAsync();
+
+            _imageHelper.DeleteImage(about.FileName);
         }
 
     }
