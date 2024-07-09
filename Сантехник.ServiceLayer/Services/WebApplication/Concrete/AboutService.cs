@@ -63,6 +63,16 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
 
         public async Task UpdateAboutAsync(AboutUpdateVM request)
         {
+            var imageResult = await _imageHelper.ImageUpload(request.Photo, ImageType.about, null);
+
+            if (imageResult.Error != null)
+            {
+                return;
+            }
+
+            request.FileName = imageResult.Filename!;
+            request.FileType = imageResult.FileType!;
+
             var about = _mapper.Map<About>(request);
             _repository.UpdateEntity(about);
             await _unitOfWork.CommitAsync();
