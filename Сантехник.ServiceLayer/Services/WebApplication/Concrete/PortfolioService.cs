@@ -57,6 +57,7 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
 
             request.FileName = imageResult.Filename!;
             request.FileType = imageResult.FileType!;
+
             Portfolio? portfolio = _mapper.Map<Portfolio>(request);
             await _repository.AddEntityAsync(portfolio);
             await _unitOfWork.CommitAsync();
