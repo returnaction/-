@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Сантехник.CoreLayer.Enumerators;
 using Сантехник.EntityLayer.WebApplication.Entities;
 using Сантехник.EntityLayer.WebApplication.ViewModels.CategoryVM;
 using Сантехник.EntityLayer.WebApplication.ViewModels.PortfolioVM;
 using Сантехник.RepositoryLayer.Repositories.Abstract;
 using Сантехник.RepositoryLayer.UnitOfWork.Abstract;
+using Сантехник.ServiceLayer.Helpers.Generic.Image;
 using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 
 namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
@@ -20,12 +22,14 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IGenericRepositories<Portfolio> _repository;
+        private readonly IImageHelper _imageHelper;
 
-        public PortfolioService(IUnitOfWork unitOfWork, IMapper mapper)
+        public PortfolioService(IUnitOfWork unitOfWork, IMapper mapper, IImageHelper imageHelper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _repository = _unitOfWork.GetGenericRepository<Portfolio>();
+            _imageHelper = imageHelper;
         }
 
 
@@ -44,6 +48,15 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
 
         public async Task AddPortfolioService(PortfolioAddVM request)
         {
+            var imageResult = await _imageHelper.ImageUpload(request.Photo, ImageType.portfolio, null);
+
+            if (imageResult.Error != null)
+            {
+                return;
+            }
+
+            request.FileName = imageResult.Filename!;
+            request.FileType = imageResult.FileType!;
             Portfolio? portfolio = _mapper.Map<Portfolio>(request);
             await _repository.AddEntityAsync(portfolio);
             await _unitOfWork.CommitAsync();
@@ -51,6 +64,17 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
 
         public async Task UpdatePortfolioAsync(PortfolioUpdateVM request)
         {
+            var imageResult = await _imageHelper.ImageUpload(request.Photo, ImageType.portfolio, null);
+
+            if (imageResult.Error != null)
+            {
+                return;
+            }
+
+            request.FileName = imageResult.Filename!;
+            request.FileType = imageResult.FileType!;
+
+
             Portfolio? portfolio = _mapper.Map<Portfolio>(request);
             _repository.UpdateEntity(portfolio);
             await _unitOfWork.CommitAsync();
@@ -61,6 +85,8 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
             Portfolio? portfolio = await _repository.GetEntityByIdAsync(id);
             _repository.DeleteEntity(portfolio);
             await _unitOfWork.CommitAsync();
+
+            _imageHelper.DeleteImage(portfolio.FileName);
         }
     }
 }
