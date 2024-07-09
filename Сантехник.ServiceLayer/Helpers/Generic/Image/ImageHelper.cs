@@ -12,6 +12,7 @@ namespace Сантехник.ServiceLayer.Helpers.Generic.Image
 {
     public class ImageHelper : IImageHelper
     {
+        // to reach our wwwFolder
         private readonly IHostEnvironment _hostEnvironment;
         private readonly string wwwRoot;
         private const string imageFolder = "images";
@@ -24,6 +25,7 @@ namespace Сантехник.ServiceLayer.Helpers.Generic.Image
         public ImageHelper(IHostEnvironment hostEnvironment)
         {
             _hostEnvironment = hostEnvironment;
+            // is our project main path
             wwwRoot = _hostEnvironment.ContentRootPath + "/wwwroot/";
         }
 
