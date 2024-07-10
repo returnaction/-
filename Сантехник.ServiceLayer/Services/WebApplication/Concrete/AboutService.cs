@@ -88,5 +88,14 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
             _imageHelper.DeleteImage(about.FileName);
         }
 
+        // UI Service methods
+        public async Task<List<AboutListForUI>> GetAllListForUIAsync()
+        {
+            var aboutListForUI = await _repository.GetAllEntityList().ProjectTo<AboutListForUI>(_mapper.ConfigurationProvider).ToListAsync();
+
+            return aboutListForUI;
+
+        }
+
     }
 }

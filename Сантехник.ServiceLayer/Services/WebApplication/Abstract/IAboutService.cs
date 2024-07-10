@@ -14,5 +14,7 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Abstract
         Task<AboutUpdateVM> GetAboutById(int id);
         Task<List<AboutListVM>> GetAllListAsync();
         Task UpdateAboutAsync(AboutUpdateVM request);
+
+        Task<List<AboutListForUI>> GetAllListForUIAsync();
     }
 }
