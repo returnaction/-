@@ -5,7 +5,6 @@ namespace Сантехник.Area.Admin.Controllers
 {
     public class DashboardController : Controller
     {
-        [Authorize]
         [Area("Admin")]
         public IActionResult Index()
         {

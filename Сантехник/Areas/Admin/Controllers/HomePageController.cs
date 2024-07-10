@@ -7,7 +7,6 @@ using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 
 namespace Сантехник.Areas.Admin.Controllers
 {
-    [Authorize]
     [Area("Admin")]
     public class HomePageController : Controller
     {
