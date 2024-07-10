@@ -14,5 +14,8 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Abstract
         Task<List<HomePageListVM>> GetAllListAsync();
         Task<HomePageUpdateVM> GetHomePageById(int id);
         Task UpdateHomePageAsync(HomePageUpdateVM request);
+
+        // UI Service methods
+        Task<List<HomePageVMForUI>> GetAllListForUI();
     }
 }

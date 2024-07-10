@@ -62,5 +62,14 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
             _repository.DeleteEntity(homePage);
             await _unitOfWork.CommitAsync();
         }
+
+
+        // UI Service methods
+
+        public async Task<List<HomePageVMForUI>> GetAllListForUI()
+        {
+            var uiList = await _repository.GetAllEntityList().ProjectTo<HomePageVMForUI>(_mapper.ConfigurationProvider).ToListAsync();
+            return uiList;
+        }
     }
 }
