@@ -7,7 +7,7 @@ using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
 
 namespace Сантехник.Areas.Admin.Controllers
 {
-    
+    [Authorize(Roles = "SuperAdmin")]
     [Area("Admin")]
     public class AboutController : Controller
     {
