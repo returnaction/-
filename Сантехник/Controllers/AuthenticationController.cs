@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
-using Сантехник.EntityLayer.Identity;
+using Сантехник.EntityLayer.Identity.Entities;
 using Сантехник.EntityLayer.Identity.ViewModels;
 using Сантехник.ServiceLayer.Helpers.Identity.EmailHelper;
 using Сантехник.ServiceLayer.Helpers.Identity.ModelStateHelper;

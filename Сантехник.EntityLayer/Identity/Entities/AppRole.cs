@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Сантехник.EntityLayer.Identity
+namespace Сантехник.EntityLayer.Identity.Entities
 {
     public class AppRole : IdentityRole
     {

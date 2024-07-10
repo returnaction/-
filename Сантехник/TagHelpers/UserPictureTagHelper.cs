@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Сантехник.EntityLayer.Identity;
+using Сантехник.EntityLayer.Identity.Entities;
 
 namespace Сантехник.TagHelpers
 {

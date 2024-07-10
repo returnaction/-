@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Сантехник.CoreLayer.Enumerators;
-using Сантехник.EntityLayer.Identity;
+using Сантехник.EntityLayer.Identity.Entities;
 using Сантехник.EntityLayer.Identity.ViewModels;
 using Сантехник.ServiceLayer.Helpers.Generic.Image;
 using Сантехник.ServiceLayer.Services.Identity.Abstract;

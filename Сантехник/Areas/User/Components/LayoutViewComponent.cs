@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Сантехник.EntityLayer.Identity;
+using Сантехник.EntityLayer.Identity.Entities;
 using Сантехник.EntityLayer.Identity.ViewModels;
 
 namespace Сантехник.Areas.User.Components

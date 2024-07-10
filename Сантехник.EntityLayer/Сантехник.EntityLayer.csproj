@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Сантехник.CoreLayer\Сантехник.CoreLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Identity\Entities\" />
-  </ItemGroup>
-
 </Project>

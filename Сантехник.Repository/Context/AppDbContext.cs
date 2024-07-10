@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Сантехник.EntityLayer.Identity;
+using Сантехник.EntityLayer.Identity.Entities;
 using Сантехник.EntityLayer.WebApplication.Entities;
 
 namespace Сантехник.RepositoryLayer.Context
