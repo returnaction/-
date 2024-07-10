@@ -16,18 +16,20 @@ namespace Сантехник.Areas.User.Controllers
     public class AuthenticationUserController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly IMapper _mapper;
 
         private readonly IValidator<UserEditVM> _userEditValidator;
 
         private readonly IAuthenticationUserService _authenticationUserService;
 
-        public AuthenticationUserController(UserManager<AppUser> userManager, IMapper mapper, IValidator<UserEditVM> userEditValidator, IAuthenticationUserService authenticationUserService)
+        public AuthenticationUserController(UserManager<AppUser> userManager, IMapper mapper, IValidator<UserEditVM> userEditValidator, IAuthenticationUserService authenticationUserService, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
             _mapper = mapper;
             _userEditValidator = userEditValidator;
             _authenticationUserService = authenticationUserService;
+            _signInManager = signInManager;
         }
 
         public async Task<IActionResult> UserEdit()
@@ -63,6 +65,13 @@ namespace Сантехник.Areas.User.Controllers
             ViewBag.Username = user!.UserName;
 
             return RedirectToAction("Index", "Dashboard", new { Area = "User" });
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return Redirect("/Home/Index");
+            
         }
     }
 }
