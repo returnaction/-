@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,11 @@ namespace Сантехник.RepositoryLayer.Configuration.Identity
                 SecurityStamp = Guid.NewGuid().ToString(),
             };
 
+            var adminPasswordHash = PasswordHash(admin, "2752985BBnn!");
+            admin.PasswordHash = adminPasswordHash;
+            builder.HasData(admin);
+
+
             var member = new AppUser
             {
                 Id = Guid.Parse("B2451B7D-F879-424A-9B48-816F44B7B5A9").ToString(),
@@ -34,6 +40,16 @@ namespace Сантехник.RepositoryLayer.Configuration.Identity
                 ConcurrencyStamp = Guid.NewGuid().ToString(),
                 SecurityStamp = Guid.NewGuid().ToString(),
             };
+
+            var memberPasswordHash = PasswordHash(member, "2752985BBnn!");
+            member.PasswordHash = memberPasswordHash;
+            builder.HasData(member);
+        }
+
+        private string PasswordHash(AppUser user, string password)
+        {
+            var passwordHasher = new PasswordHasher<AppUser>();
+            return passwordHasher.HashPassword(user, password);
         }
 
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -27,8 +28,7 @@ namespace Сантехник.RepositoryLayer.Configuration.Identity
                 Name = "Member",
                 NormalizedName = "MEMBER",
                 ConcurrencyStamp = Guid.NewGuid().ToString()
-            }
-            );
+            });
         }
     }
 }
