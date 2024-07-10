@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Сантехник.EntityLayer.Identity.Entities;
@@ -10,6 +11,7 @@ using Сантехник.ServiceLayer.Services.Identity.Abstract;
 
 namespace Сантехник.Areas.User.Controllers
 {
+    [Authorize(Roles = "Member, SuperAdmin")]
     [Area("User")]
     public class AuthenticationUserController : Controller
     {
