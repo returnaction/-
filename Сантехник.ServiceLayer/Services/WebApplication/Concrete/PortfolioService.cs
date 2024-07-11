@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Сантехник.CoreLayer.Enumerators;
 using Сантехник.EntityLayer.WebApplication.Entities;
+using Сантехник.EntityLayer.WebApplication.ViewModels.AboutVM;
 using Сантехник.EntityLayer.WebApplication.ViewModels.CategoryVM;
 using Сантехник.EntityLayer.WebApplication.ViewModels.PortfolioVM;
 using Сантехник.RepositoryLayer.Repositories.Abstract;
@@ -88,6 +89,14 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
             await _unitOfWork.CommitAsync();
 
             _imageHelper.DeleteImage(portfolio.FileName);
+        }
+
+        // UI Service methods
+
+        public async Task<List<PortfolioListForUI>> GetAllListForUIAsync()
+        {
+            var portfolioListForUI = await _repository.GetAllEntityList().ProjectTo<PortfolioListForUI>(_mapper.ConfigurationProvider).ToListAsync();
+            return portfolioListForUI;
         }
     }
 }

@@ -17,6 +17,9 @@ namespace Сантехник.ServiceLayer.Automapper.WebApplication
             CreateMap<Portfolio, PortfolioAddVM>().ReverseMap();
             CreateMap<Portfolio, PortfolioListVM>().ReverseMap();
             CreateMap<Portfolio, PortfolioUpdateVM>().ReverseMap();
+
+
+            CreateMap<Portfolio, PortfolioListForUI>().ReverseMap();
         }
     }
 }

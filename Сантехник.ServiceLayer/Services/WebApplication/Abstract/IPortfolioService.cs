@@ -14,5 +14,7 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Abstract
         Task<List<PortfolioListVM>> GetAllListAsync();
         Task<PortfolioUpdateVM> GetPortfolioById(int id);
         Task UpdatePortfolioAsync(PortfolioUpdateVM request);
+
+        Task<List<PortfolioListForUI>> GetAllListForUIAsync();
     }
 }
