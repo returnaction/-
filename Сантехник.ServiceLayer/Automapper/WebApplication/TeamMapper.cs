@@ -17,6 +17,8 @@ namespace Сантехник.ServiceLayer.Automapper.WebApplication
             CreateMap<Team, TeamAddVM>().ReverseMap();
             CreateMap<Team, TeamListVM>().ReverseMap();
             CreateMap<Team, TeamUpdateVM>().ReverseMap();
+
+            CreateMap<Team, TeamListForUI>().ReverseMap();
         }
     }
 }

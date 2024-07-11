@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Сантехник.CoreLayer.Enumerators;
 using Сантехник.EntityLayer.WebApplication.Entities;
 using Сантехник.EntityLayer.WebApplication.ViewModels.CategoryVM;
+using Сантехник.EntityLayer.WebApplication.ViewModels.PortfolioVM;
 using Сантехник.EntityLayer.WebApplication.ViewModels.TeamVM;
 using Сантехник.RepositoryLayer.Repositories.Abstract;
 using Сантехник.RepositoryLayer.UnitOfWork.Abstract;
@@ -88,6 +89,14 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
             await _unitOfWork.CommitAsync();
 
             _imageHelper.DeleteImage(team.FileName);
+        }
+
+        // UI Service methods
+
+        public async Task<List<TeamListForUI>> GetAllListForUIAsync()
+        {
+            var teamListForUI = await _repository.GetAllEntityList().ProjectTo<TeamListForUI>(_mapper.ConfigurationProvider).ToListAsync();
+            return teamListForUI;
         }
     }
 }
