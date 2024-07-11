@@ -98,5 +98,6 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
             var portfolioListForUI = await _repository.GetAllEntityList().ProjectTo<PortfolioListForUI>(_mapper.ConfigurationProvider).ToListAsync();
             return portfolioListForUI;
         }
+
     }
 }

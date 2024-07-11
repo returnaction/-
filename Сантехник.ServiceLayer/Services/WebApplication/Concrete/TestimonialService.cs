@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Сантехник.CoreLayer.Enumerators;
 using Сантехник.EntityLayer.WebApplication.Entities;
 using Сантехник.EntityLayer.WebApplication.ViewModels.CategoryVM;
+using Сантехник.EntityLayer.WebApplication.ViewModels.PortfolioVM;
 using Сантехник.EntityLayer.WebApplication.ViewModels.TestimonialVM;
 using Сантехник.RepositoryLayer.Repositories.Abstract;
 using Сантехник.RepositoryLayer.UnitOfWork.Abstract;
@@ -88,5 +89,14 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Concrete
 
             _imageHelper.DeleteImage(testimonial.FileName);
         }
+
+        // UI Service methods
+
+        public async Task<List<TestimonialListForUI>> GetAllListForUIAsync()
+        {
+            var testimonialListForUI = await _repository.GetAllEntityList().ProjectTo<TestimonialListForUI>(_mapper.ConfigurationProvider).ToListAsync();
+            return testimonialListForUI;
+        }
+
     }
 }

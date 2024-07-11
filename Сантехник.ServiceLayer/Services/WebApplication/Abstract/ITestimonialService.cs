@@ -14,5 +14,7 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Abstract
         Task<List<TestimonialListVM>> GetAllListAsync();
         Task<TestimonialUpdateVM> GetTestimonialById(int id);
         Task UpdateTestimonialAsync(TestimonialUpdateVM request);
+
+        Task<List<TestimonialListForUI>> GetAllListForUIAsync();
     }
 }

@@ -17,6 +17,8 @@ namespace Сантехник.ServiceLayer.Automapper.WebApplication
             CreateMap<Testimonial, TestimonialAddVM>().ReverseMap();
             CreateMap<Testimonial, TestimonialListVM>().ReverseMap();
             CreateMap<Testimonial, TestimonialUpdateVM>().ReverseMap();
+
+            CreateMap<Testimonial, TestimonialListForUI>().ReverseMap();
         }
     }
 }
