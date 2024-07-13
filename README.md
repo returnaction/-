@@ -5,16 +5,16 @@
 Есть два разделения для Пользователя и для Админа. У Админа есть домолнительные функции. 
 
 Архитектура:
-  Шаблон MVC
-  Шаблон UnitOfWork
-  Шаблон Repository
+  Шаблон MVC,
+  Шаблон UnitOfWork,
+  Шаблон Repository,
   
 Управление данными:
-  База данных MS SQL
-  Entity Framework Core
+  База данных MS SQL,
+  Entity Framework Core,
 
 Аутентификация и авторизация пользователей:
-  ASP.NET Identity
+  ASP.NET Identity,
   IdentityUser, SignInManager, UserManager
   Роли
 
@@ -24,22 +24,22 @@
     Забыли пароль: Поддерживает восстановление пароля через ссылки для сброса, отправленные на электронную почту.
 
 Валидация и отображение данных:
-  FluentValidation
-  AutoMapper
+  FluentValidation,
+  AutoMapper,
 
 Области и контроль доступа:
-  Раздел пользователя
-  Раздел администратора
+  Раздел пользователя,
+  Раздел администратора,
 
 Управление профилем пользователя:
-  Загрузка изображений
-  Сброс пароля
-  Редактирование пользователя
+  Загрузка изображений,
+  Сброс пароля,
+  Редактирование пользователя,
 
 Технические детали:
-  Фреймворк ASP.NET 8 MVC
-  MS SQL Server
-  Identity.EntityFrameworkCore
-  FluentValidation
+  Фреймворк ASP.NET 8 MVC,
+  MS SQL Server,
+  Identity.EntityFrameworkCore,
+  FluentValidation,
   AutoMapper
   
