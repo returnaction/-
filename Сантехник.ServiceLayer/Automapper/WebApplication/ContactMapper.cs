@@ -17,6 +17,8 @@ namespace Сантехник.ServiceLayer.Automapper.WebApplication
             CreateMap<Contact, ContactAddVM>().ReverseMap();
             CreateMap<Contact, ContactListVM>().ReverseMap();
             CreateMap<Contact, ContactUpdateVM>().ReverseMap();
+
+            CreateMap<Contact, ContactListForUI>().ReverseMap();
         }
     }
 }

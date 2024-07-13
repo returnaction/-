@@ -14,5 +14,7 @@ namespace Сантехник.ServiceLayer.Services.WebApplication.Abstract
         Task<List<ContactListVM>> GetAllListAsync();
         Task<ContactUpdateVM> GetContactById(int id);
         Task UpdateContactAsync(ContactUpdateVM request);
+
+        Task<List<ContactListForUI>> GetAllListForUIAsync();
     }
 }
