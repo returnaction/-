@@ -16,5 +16,8 @@ namespace Сантехник.RepositoryLayer.Repositories.Abstract
         Task<T> GetEntityByIdAsync(int id);
         void UpdateEntity(T entity);
         IQueryable<T> Where(Expression<Func<T, bool>> predicate);
+        Task<int> GetAllCount();
+
+
     }
 }
