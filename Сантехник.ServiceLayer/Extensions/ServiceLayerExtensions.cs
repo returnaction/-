@@ -1,17 +1,10 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Сантехник.ServiceLayer.FluentValidation.WebApplication.HomePageValidation;
-using Сантехник.ServiceLayer.Services.WebApplication.Abstract;
-using Сантехник.ServiceLayer.Services.WebApplication.Concrete;
-using Сантехник.ServiceLayer.Extensions.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
+using Сантехник.ServiceLayer.Extensions.Identity;
+using Сантехник.ServiceLayer.FluentValidation.WebApplication.HomePageValidation;
 using Сантехник.ServiceLayer.Helpers.Generic.Image;
 
 namespace Сантехник.ServiceLayer.Extensions
