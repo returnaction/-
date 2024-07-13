@@ -60,7 +60,7 @@ namespace Сантехник.ServiceLayer.Helpers.Generic.Image
 
             string fileExtenstion = Path.GetExtension(imageFile.FileName).ToLower();
 
-            if (fileExtenstion != ".jpg" && fileExtenstion != ".jpeg")
+            if (fileExtenstion != ".jpg" && fileExtenstion != ".jpeg" && fileExtenstion != ".png")
             {
                 return new ImageUploadModel
                 {
